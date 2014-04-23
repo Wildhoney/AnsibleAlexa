@@ -6,11 +6,23 @@
     - name: Install Nginx
       apt: pkg=nginx state=installed update_cache=true
       sudo: yes
-      notify:
-        - start nginx
 
-  handlers:
-
-    - name: start nginx
+    - name: Apt Get Update
+      command: apt-get update
       sudo: yes
+
+    - name: Install PHP5-FPM
+      apt: pkg=php5-fpm state=installed update_cache=true
+      sudo: yes
+
+    - name: Start Nginx
       service: name=nginx state=started
+      sudo: yes
+
+    - name: Create Nginx Configuration
+      command: cp /etc/provision/nginx/default /etc/nginx/sites-available/default -f
+      sudo: yes
+
+    - name: Restart Nginx
+      service: name=nginx state=restarted
+      sudo: yes
