@@ -9,14 +9,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-  config.vm.network "forwarded_port", guest: 80, host: 3002
+  config.vm.network "forwarded_port", guest: 80, host: 3001
+  config.vm.network "private_network", ip: "192.168.50.3"
   config.vm.network "private_network", ip: "192.168.50.4"
   config.vm.network "private_network", ip: "192.168.50.5"
 
   # Install all dependencies, and invoke Ansible.
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/playbooks/repositories.yml"
+    ansible.playbook = "ansible/playbooks/repository.yml"
   end
 
   # Configure the synchronised directories.
@@ -39,6 +40,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "ansible/playbooks/mysql.yml"
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "ansible/playbooks/configuration.yml"
   end
 
 end

@@ -1,5 +1,8 @@
 ---
 - hosts: all
+  name: MySQL
+  vars:
+      mysql_password: password123
 
   tasks:
 
@@ -7,13 +10,29 @@
       apt: pkg=mysql-server state=installed update_cache=true
       sudo: yes
 
-#    - name: ensure mysql is running and starts on boot
-#      service: name=mysql state=started enabled=true
-#
-#    # Need to do this for idempotency, see
-#    # http://ansible.cc/docs/modules.html#mysql-user
-#    - name: update mysql root password for all root accounts
-#      mysql_user: name=root host=localhost password={{ root_db_password }}
+    - name: Install MySQL-Python
+      apt: pkg=python2.7-mysqldb state=installed update_cache=true
+      sudo: yes
+
+    - name: ensure mysql is running and starts on boot
+      service: name=mysql state=started enabled=true
+
+    - name: Setup Root MySQL
+      mysql_user: name=root host=localhost password={{ mysql_password }}
+                  priv=*.*:ALL,GRANT state=present login_password={{ mysql_password }} login_user=root
+
+    - name: Setup Remote MySQL
+      mysql_user: name=remote host=192.168.50.3 password={{ mysql_password }}
+                  priv=*.*:ALL,GRANT state=present login_password={{ mysql_password }} login_user=root
+
+    - name: Copy MySQL Configuration
+      copy: src=../../provision/mysql/my.cnf dest=/etc/mysql owner=root group=root mode=0644 force=yes
+      sudo: yes
+
+    - name: Restarting MySQL Server
+      service: name=mysql-server state=restarted enabled=true
+      sudo: yes
+
 #
 #    - name: copy .my.cnf file with root password credentials
 #      template: src=templates/root/.my.cnf dest=/root/.my.cnf owner=root mode=0600
