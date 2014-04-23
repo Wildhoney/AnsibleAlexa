@@ -13,13 +13,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Configure the synchronised directories.
   config.vm.synced_folder "./provision", "/etc/provision"
-  config.vm.synced_folder "./websites/magento", "/usr/share/nginx/www/magento/web-root"
-  config.vm.synced_folder "./websites/wordpress", "/usr/share/nginx/www/wordpress/content"
+  config.vm.synced_folder "./websites/magento/web-root", "/usr/share/nginx/www/magento", create: true
+  config.vm.synced_folder "./websites/wordpress/content", "/usr/share/nginx/www/wordpress", create: true
 
   # Install all dependencies, and invoke Ansible.
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/playbooks/development.yml"
+    ansible.playbook = "ansible/playbooks/repositories.yml"
   end
 
   config.vm.provision "ansible" do |ansible|
