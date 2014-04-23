@@ -2,10 +2,19 @@
 - hosts: all
   name: MySQL
   vars:
+
+      user_email: adam@alexandalexa.com
+
       mysql_username: root
       mysql_password: ansiblealexa
+
       db_wordpress: wordpress
       db_magento: magento
+
+      host_magento: magento.alexandalexa.com
+      host_wordpress: wordpress.alexandalexa.com
+
+      db_wordpress_path: ~/wordpress.sql
 
   tasks:
 
@@ -46,11 +55,14 @@
     - name: Check Wordpress Database
       mysql_db: name={{ db_wordpress }} state=present
                 login_password={{ mysql_password }} login_user={{ mysql_username }}
-      notify: Import Wordpress
+      notify: Replace Variables
 
   handlers:
 
-  - name: Import Wordpress
-    mysql_db: name={{ db_wordpress }} state=import target=/vagrant/database/wordpress.sql
-              login_password={{ mysql_password }} login_user={{ mysql_username }}
-    sudo: yes
+    - name: Replace Variables
+      template: src=../../database/wordpress.sql dest={{ db_wordpress_path }} owner=root group=root mode=0644
+      notify: Import Wordpress
+
+    - name: Import Wordpress
+      mysql_db: name={{ db_wordpress }} state=import target={{ db_wordpress_path }}
+                login_password={{ mysql_password }} login_user={{ mysql_username }}
