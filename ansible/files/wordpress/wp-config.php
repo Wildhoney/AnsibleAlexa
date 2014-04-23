@@ -22,7 +22,7 @@ define('DB_NAME', 'wordpress');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'password123');
+define('DB_PASSWORD', 'ansiblealexa');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');

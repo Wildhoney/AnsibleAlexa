@@ -1,0 +1,11 @@
+---
+- hosts: all
+  name: Configuration
+
+  tasks:
+
+    # Wordpress
+
+    - name: Copy Wordpress Configuration
+      copy: src=../files/wordpress/wp-config.php dest=/usr/share/nginx/www/wordpress/content owner=root group=root mode=0644 force=yes
+      sudo: yes

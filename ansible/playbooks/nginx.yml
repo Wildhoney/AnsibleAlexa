@@ -24,16 +24,20 @@
 
     # Configuration
 
+    - name: Create Welcome Document
+      copy: src=../files/nginx/index.html dest=/usr/share/nginx/www owner=root group=root mode=0644 force=yes
+      sudo: yes
+
     - name: Create Default Configuration
-      copy: src=../../provision/nginx/default dest=/etc/nginx/sites-available owner=root group=root mode=0644 force=yes
+      copy: src=../files/nginx/default dest=/etc/nginx/sites-available owner=root group=root mode=0644 force=yes
       sudo: yes
 
     - name: Create Magento Configuration
-      copy: src=../../provision/nginx/192.168.50.4 dest=/etc/nginx/sites-available owner=root group=root mode=0644 force=yes
+      copy: src=../files/nginx/192.168.50.4 dest=/etc/nginx/sites-available owner=root group=root mode=0644 force=yes
       sudo: yes
 
     - name: Create Wordpress Configuration
-      copy: src=../../provision/nginx/192.168.50.5 dest=/etc/nginx/sites-available owner=root group=root mode=0644 force=yes
+      copy: src=../files/nginx/192.168.50.5 dest=/etc/nginx/sites-available owner=root group=root mode=0644 force=yes
       sudo: yes
 
     # Create Symlinks

@@ -22,8 +22,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Configure the synchronised directories.
 
-  config.vm.synced_folder "./provision", "/etc/provision"
-
   config.vm.synced_folder "./websites/magento", "/usr/share/nginx/www/magento",
                           create: true, owner: "root", group: "root"
 
@@ -43,7 +41,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/playbooks/configuration.yml"
+    ansible.playbook = "ansible/playbooks/config.yml"
   end
 
 end
