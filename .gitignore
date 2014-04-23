@@ -2,3 +2,4 @@
 /.vagrant
 /websites/*
 !/websites/.gitkeep
+/database/*.sql
