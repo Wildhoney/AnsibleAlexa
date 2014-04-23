@@ -1,0 +1,28 @@
+---
+- hosts: all
+
+  tasks:
+
+    # PHP Dependencies
+
+    - name: Install PHP-MySQL Module
+      apt: pkg=php5-mysql state=installed update_cache=true
+      sudo: yes
+
+    - name: Install PHP-Curl Module
+      apt: pkg=php5-curl state=installed update_cache=true
+      sudo: yes
+
+    - name: Install PHP-Memcache Module
+      apt: pkg=php5-memcache state=installed update_cache=true
+      sudo: yes
+
+    # Finalise
+
+    - name: Restart Nginx
+      service: name=nginx state=restarted
+      sudo: yes
+
+    - name: Restart PHP
+      service: name=php5-fpm state=reloaded
+      sudo: yes

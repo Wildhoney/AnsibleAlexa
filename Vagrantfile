@@ -33,4 +33,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.playbook = "ansible/playbooks/nginx.yml"
   end
 
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "ansible/playbooks/php.yml"
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "ansible/playbooks/mysql.yml"
+  end
+
 end
