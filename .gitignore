@@ -1,2 +1,3 @@
 /.idea
-/websites
+/websites/*
+!/websites/.gitkeep
