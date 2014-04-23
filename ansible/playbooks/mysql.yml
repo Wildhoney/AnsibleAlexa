@@ -62,6 +62,7 @@
     - name: Replace Variables
       template: src=../../database/wordpress.sql dest={{ db_wordpress_path }} owner=root group=root mode=0644
       notify: Import Wordpress
+      sudo: yes
 
     - name: Import Wordpress
       mysql_db: name={{ db_wordpress }} state=import target={{ db_wordpress_path }}
