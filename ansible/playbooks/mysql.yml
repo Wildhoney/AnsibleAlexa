@@ -14,15 +14,14 @@
       apt: pkg=python2.7-mysqldb state=installed update_cache=true
       sudo: yes
 
-    - name: ensure mysql is running and starts on boot
+    - name: Ensure MySQL Running
       service: name=mysql state=started enabled=true
 
     - name: Setup Root MySQL
-      mysql_user: name=root host=localhost password={{ mysql_password }}
-                  priv=*.*:ALL,GRANT state=present login_password={{ mysql_password }} login_user=root
+      mysql_user: name=root host=localhost password={{ mysql_password }} priv=*.*:ALL,GRANT state=present
 
     - name: Setup Remote MySQL
-      mysql_user: name=remote host=192.168.50.3 password={{ mysql_password }}
+      mysql_user: name=developer host=% password={{ mysql_password }}
                   priv=*.*:ALL,GRANT state=present login_password={{ mysql_password }} login_user=root
 
     - name: Copy MySQL Configuration
@@ -30,7 +29,7 @@
       sudo: yes
 
     - name: Restarting MySQL Server
-      service: name=mysql-server state=restarted enabled=true
+      service: name=mysql state=restarted enabled=true
       sudo: yes
 
 #
