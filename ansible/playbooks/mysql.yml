@@ -55,7 +55,7 @@
     - name: Check Wordpress Database
       mysql_db: name={{ db_wordpress }} state=present
                 login_password={{ mysql_password }} login_user={{ mysql_username }}
-      notify: Replace Variables
+      notify: Template Wordpress DB
 
   handlers:
 
