@@ -4,24 +4,20 @@
 
   tasks:
 
-    - name: Check Magento
+    # Magento
+
+    - name: Check Magento...
       stat: path=../../websites/magento/.git
       register: check_magento_path
 
-    - name: Prepare Magento
-      command: rm -rf ../../websites/wordpress/web-root
-      register: check_magento_path
+    - name: Clone Magento...
+      git: repo=git@github.com:alexandalexa/hephaestus.git dest=../../websites/magento
+      when: check_magento_path.stat.exists == false
 
-#    - name: Clone Magento...
-#      git: repo=git@github.com:alexandalexa/hephaestus.git dest=../../websites/magento
-#      when: check_magento_path.stat.exists == false
+    # Wordpress
 
-    - name: Check Wordpress
+    - name: Check Wordpress...
       stat: path=../../websites/wordpress/.git
-      register: check_wordpress_path
-
-    - name: Prepare Wordpress
-      command: rm -rf ../../websites/wordpress/content
       register: check_wordpress_path
 
     - name: Clone Wordpress...

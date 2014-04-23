@@ -3,6 +3,8 @@
 
   tasks:
 
+    # Dependencies and PHP5
+
     - name: Install Nginx
       apt: pkg=nginx state=installed update_cache=true
       sudo: yes
@@ -19,9 +21,33 @@
       service: name=nginx state=started
       sudo: yes
 
-    - name: Create Nginx Configuration
-      command: cp /etc/provision/nginx/default /etc/nginx/sites-available/default -f
+    # Configuration
+
+    - name: Create Default Configuration
+      copy: src=../../provision/nginx/default dest=/etc/nginx/sites-available owner=root group=root mode=0644 force=yes
       sudo: yes
+
+    - name: Create Magento Configuration
+      copy: src=../../provision/nginx/192.168.50.4 dest=/etc/nginx/sites-available owner=root group=root mode=0644 force=yes
+      sudo: yes
+
+    - name: Create Wordpress Configuration
+      copy: src=../../provision/nginx/192.168.50.5 dest=/etc/nginx/sites-available owner=root group=root mode=0644 force=yes
+      sudo: yes
+
+    # Create Symlinks
+
+    - name: Create Magento Symlink...
+      command: ln -s /etc/nginx/sites-available/192.168.50.4 /etc/nginx/sites-enabled/192.168.50.4
+      sudo: yes
+      ignore_errors: yes
+
+    - name: Create Wordpress Symlink...
+      command: ln -s /etc/nginx/sites-available/192.168.50.5 /etc/nginx/sites-enabled/192.168.50.5
+      sudo: yes
+      ignore_errors: yes
+
+    # Finalise
 
     - name: Restart Nginx
       service: name=nginx state=restarted
