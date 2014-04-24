@@ -8,6 +8,7 @@ server {
 
 	# Make site accessible from http://localhost/
 	server_name localhost;
+    sendfile off;
 
 	location / {
 		# First attempt to serve request as file, then

@@ -4,6 +4,7 @@ server {
     index index.php index.html index.htm;
 
     server_name 192.168.50.4;
+    sendfile off;
 
 	location ~ \.php$ {
         try_files $uri =404;
