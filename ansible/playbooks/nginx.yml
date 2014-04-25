@@ -7,6 +7,7 @@
 
     local_default_path: ../files/nginx/default
     local_index_html_path: ../files/nginx/index.html
+    local_info_php_path: ../files/nginx/info.php
 
     local_magento_config: ../files/nginx/config-magento
     local_wordpress_config: ../files/nginx/config-wordpress
@@ -44,6 +45,10 @@
 
     - name: Create Welcome Document
       template: src={{ local_index_html_path }} dest={{ remote_www_root_path }} owner=root group=root mode=0644 force=yes
+      sudo: yes
+
+    - name: Create PHP Info Document
+      template: src={{ local_info_php_path }} dest={{ remote_www_root_path }} owner=root group=root mode=0644 force=yes
       sudo: yes
 
     - name: Create Default Configuration
