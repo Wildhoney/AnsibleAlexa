@@ -1,6 +1,15 @@
 ---
 - hosts: all
   name: PHP
+  vars:
+
+    # Local
+
+    local_apc_ini_path: ../files/php/apc.ini
+
+    # Remote
+
+    remote_apc_ini_path: /etc/php5/conf.d
 
   tasks:
 
@@ -16,6 +25,32 @@
 
     - name: Install PHP-Memcache Module
       apt: pkg=php5-memcache state=installed update_cache=true
+      sudo: yes
+
+    - name: Install PHP-CLI Module
+      apt: pkg=php5-cli state=installed update_cache=true
+      sudo: yes
+
+    # APC Dependency
+
+    - name: Install PHP-PEAR Module
+      apt: pkg=php5-php-pear state=installed update_cache=true
+      sudo: yes
+
+    - name: Install PHP-Dev Module
+      apt: pkg=php5-dev state=installed update_cache=true
+      sudo: yes
+
+    - name: Install Apache-Prefork-Dev Module
+      apt: pkg=apache2-prefork-dev state=installed update_cache=true
+      sudo: yes
+
+    - name: Install APC
+      command: pecl install apc
+      sudo: yes
+
+    - name: Create APC Configuration
+      copy: src={{ local_apc_ini_path }} dest={{ remote_apc_ini_path }} owner=root group=root mode=0644 force=yes
       sudo: yes
 
     # Finalise

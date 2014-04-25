@@ -2,8 +2,15 @@
 - hosts: all
   name: Repository
   connection: local
+  vars:
+
+    local_magento_repository_path: ../../websites/magento
+    local_wordpress_repository_path: ../../websites/wordpress
 
   tasks:
+
+    - name: Include Configuration
+      include_vars: ../../ansiblealexa.yml
 
     # Magento
 
@@ -12,7 +19,7 @@
       register: check_magento_path
 
     - name: Clone Magento
-      git: repo=git@github.com:alexandalexa/hephaestus.git dest=../../websites/magento
+      git: repo={{ repository_magento }} dest={{ local_magento_repository_path }}
       when: check_magento_path.stat.exists == false
 
     # Wordpress
@@ -22,5 +29,5 @@
       register: check_wordpress_path
 
     - name: Clone Wordpress
-      git: repo=git@github.com:alexandalexa/Wordpress.git dest=../../websites/wordpress
+      git: repo={{ repository_wordpress }} dest={{ local_wordpress_repository_path }}
       when: check_wordpress_path.stat.exists == false

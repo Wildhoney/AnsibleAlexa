@@ -1,0 +1,31 @@
+---
+
+# Personal Details
+
+user_email: adam@alexandalexa.com
+
+# Database Credentials
+
+db_username_root: root
+db_username_remote: developer
+
+db_hostname: localhost
+db_password: ansiblealexa
+
+db_name_magento: magento
+db_name_wordpress: wordpress
+
+# IP Addresses
+
+ip_magento: 192.168.50.4
+ip_wordpress: 192.168.50.5
+
+# Hostnames
+
+host_magento: magento.dev.alexandalexa.com
+host_wordpress: wordpress.dev.alexandalexa.com
+
+# Repositories
+
+repository_magento: git@github.com:alexandalexa/hephaestus.git
+repository_wordpress: git@github.com:alexandalexa/Wordpress.git

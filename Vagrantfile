@@ -14,6 +14,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "private_network", ip: "192.168.50.4"
   config.vm.network "private_network", ip: "192.168.50.5"
 
+  config.vm.provider "virtualbox" do |virtualbox|
+    virtualbox.memory = 4096
+    virtualbox.cpus = 2
+  end
+
   # Install all dependencies, and invoke Ansible.
 
   config.vm.provision "ansible" do |ansible|
@@ -42,6 +47,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "ansible/playbooks/config.yml"
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "ansible/playbooks/hosts.yml"
   end
 
 end

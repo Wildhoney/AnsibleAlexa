@@ -3,23 +3,24 @@
   name: MySQL
   vars:
 
-      user_email: adam@alexandalexa.com
+    db_magento_remote_path: /var/magento.sql
+    db_wordpress_remote_path: /var/wordpress.sql
 
-      mysql_username: root
-      mysql_password: ansiblealexa
+    db_magento_local_path: ../files/database/magento.sql
+    db_wordpress_local_path: ../files/database/wordpress.sql
 
-      db_wordpress: wordpress
-      db_magento: magento
+    # Local
 
-      host_magento: test.alexandalexa.com
-      host_wordpress: 192.168.50.5
+    local_my_cnf_path: ../files/mysql/my.cnf
 
-#      host_magento: magento.dev.alexandalexa.com
-#      host_wordpress: wordpress.dev.alexandalexa.com
+    # Remote
 
-      db_wordpress_path: /var/wordpress.sql
+    remote_my_cnf_path: /etc/mysql
 
   tasks:
+
+    - name: Include Configuration
+      include_vars: ../../ansiblealexa.yml
 
     # Installation
 
@@ -37,16 +38,16 @@
     # Users
 
     - name: Setup Local MySQL User
-      mysql_user: name={{ mysql_username }} host=localhost password={{ mysql_password }} priv=*.*:ALL,GRANT state=present
+      mysql_user: name={{ db_username_root }} host=localhost password={{ db_password }} priv=*.*:ALL,GRANT state=present
       ignore_errors: yes
 
     - name: Setup Remote MySQL User
-      mysql_user: name=developer host=% password={{ mysql_password }}
+      mysql_user: name={{ db_username_remote }} host=% password={{ db_password }}
                   priv=*.*:ALL,GRANT state=present
-                  login_password={{ mysql_password }} login_user={{ mysql_username }}
+                  login_password={{ db_password }} login_user={{ db_username_root }}
 
     - name: Copy MySQL Configuration
-      copy: src=../files/mysql/my.cnf dest=/etc/mysql owner=root group=root mode=0644 force=yes
+      copy: src={{ local_my_cnf_path }} dest={{ remote_my_cnf_path }} owner=root group=root mode=0644 force=yes
       sudo: yes
 
     - name: Restarting MySQL Server
@@ -55,24 +56,48 @@
 
     # Database dumps
 
+    - name: Check Magento Database
+      mysql_db: name={{ db_name_magento }} state=present
+                login_password={{ db_password }} login_user={{ db_username_root }}
+      notify: Copy Magento DB
+
     - name: Check Wordpress Database
-      mysql_db: name={{ db_wordpress }} state=present
-                login_password={{ mysql_password }} login_user={{ mysql_username }}
+      mysql_db: name={{ db_name_wordpress }} state=present
+                login_password={{ db_password }} login_user={{ db_username_root }}
       notify: Template Wordpress DB
 
   handlers:
 
+    # Magento
+
+    - name: Copy Magento DB
+      copy: src={{ db_magento_local_path }} dest={{ db_magento_remote_path }} owner=root group=root mode=0644
+      notify: Import Magento
+      sudo: yes
+
+    - name: Import Magento
+      mysql_db: name={{ db_name_magento }} state=import target={{ db_magento_remote_path }}
+                login_password={{ db_password }} login_user={{ db_username_root }}
+      notify: Remove Magento Copied DB
+      sudo: yes
+
+    - name: Remove Magento Copied DB
+      command: rm -f {{ db_magento_remote_path }}
+      sudo: yes
+
+    # Wordpress
+
     - name: Template Wordpress DB
-      template: src=../files/database/wordpress.sql dest={{ db_wordpress_path }} owner=root group=root mode=0644
+      template: src={{ db_wordpress_local_path }} dest={{ db_wordpress_remote_path }} owner=root group=root mode=0644
       notify: Import Wordpress
       sudo: yes
 
     - name: Import Wordpress
-      mysql_db: name={{ db_wordpress }} state=import target={{ db_wordpress_path }}
-                login_password={{ mysql_password }} login_user={{ mysql_username }}
+      mysql_db: name={{ db_name_wordpress }} state=import target={{ db_wordpress_remote_path }}
+                login_password={{ db_password }} login_user={{ db_username_root }}
       notify: Remove Wordpress Template DB
       sudo: yes
 
     - name: Remove Wordpress Template DB
-      command: rm -f {{ db_wordpress_path }}
+      command: rm -f {{ db_wordpress_remote_path }}
       sudo: yes

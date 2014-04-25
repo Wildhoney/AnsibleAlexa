@@ -3,8 +3,11 @@ server {
     root /usr/share/nginx/www/wordpress/content;
     index index.php index.html index.htm;
 
-    server_name 192.168.50.5;
+    server_name {{ host_wordpress }};
     sendfile off;
+    
+    access_log /var/log/nginx/wordpress.log;
+    error_log /var/log/nginx/wordpress.log;
 
 	location ~ \.php$ {
         try_files $uri =404;

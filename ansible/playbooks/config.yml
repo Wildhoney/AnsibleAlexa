@@ -1,11 +1,55 @@
 ---
 - hosts: all
   name: Configuration
+  vars:
+
+    # Magento
+
+    local_magento_local_xml_path: ../files/magento/local.xml
+    local_magento_domains_path: ../files/magento/domains.php
+
+    remote_magento_local_xml_path: /usr/share/nginx/www/magento/web-root/app/etc
+    remote_magento_domains_path: /usr/share/nginx/www/magento/web-root
+
+    remote_magento_shell_path: /usr/share/nginx/www/magento/web-root/shell
+
+    # Wordpress
+
+    local_wordpress_wpconfig_path: ../files/wordpress/wp-config.php
+    remote_wordpress_wpconfig_path: /usr/share/nginx/www/wordpress/content
 
   tasks:
+
+    - name: Include Configuration
+      include_vars: ../../ansiblealexa.yml
 
     # Wordpress
 
     - name: Copy Wordpress Configuration
-      copy: src=../files/wordpress/wp-config.php dest=/usr/share/nginx/www/wordpress/content owner=root group=root mode=0644 force=yes
+      template: src={{ local_wordpress_wpconfig_path }} dest={{ remote_wordpress_wpconfig_path }}
+                owner=root group=root mode=0644
       sudo: yes
+
+    # Magento
+
+    - name: Template Magento Local.xml
+      template: src={{ local_magento_local_xml_path }} dest={{ remote_magento_local_xml_path }}
+                owner=root group=root mode=0644
+      sudo: yes
+
+    - name: Template Magento Domains.php
+      template: src={{ local_magento_domains_path }} dest={{ remote_magento_domains_path }}
+                owner=root group=root mode=0644
+      sudo: yes
+
+    - name: Reindex Magento "Catalog Product Flat"
+      command: php {{ remote_magento_shell_path }}/indexer.php --reindex catalog_product_flat
+
+    - name: Reindex Magento "Catalog Category Flat"
+      command: php {{ remote_magento_shell_path }}/indexer.php --reindex catalog_category_flat
+
+    - name: Reindex Magento "Catalog URL"
+      command: php {{ remote_magento_shell_path }}/indexer.php --reindex catalog_url
+
+    - name: Reindex Magento "Catalog Inventory Stock"
+      command: php {{ remote_magento_shell_path }}/indexer.php --reindex cataloginventory_stock

@@ -1,0 +1,89 @@
+server {
+
+    root /usr/share/nginx/www/magento/web-root;
+    index index.php index.html index.htm;
+
+    server_name {{ host_magento }};
+    sendfile off;
+
+    access_log /var/log/nginx/magento.log;
+    error_log /var/log/nginx/magento.log;
+    
+    location ^~ /app/ {
+        deny all;
+    }
+
+    location ~ /(skin|media)/ {
+        access_log off;
+        expires 30d;
+    }
+
+    location ~ [^/]\.php(/|$) {
+
+    if (!-e $request_filename) { rewrite / /index.php last; } #;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param MAGE_ROOT_DIR /var/www;
+        fastcgi_pass  127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param HTTP_HOST magento.alexandalexa.com;
+        fastcgi_param MAGE_IS_DEVELOPER_MODE 1;
+        include fastcgi_params;
+        fastcgi_read_timeout 18000;
+    }
+
+    location  ~ /(content)/ {
+        # fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name/Wordpress;
+        # fastcgi_pass  127.0.0.1:9000;
+        # fastcgi_index index.php;
+        # fastcgi_param HTTP_HOST blog.alexandalexa.com;
+        # include fastcgi_params;
+        # fastcgi_read_timeout 18000;
+    }
+
+    location ^~ /includes/ {
+        deny all;
+    }
+
+    location ^~ /lib/ {
+        deny all;
+    }
+
+    location ^~ /media/downloadable/ {
+        deny all;
+    }
+
+    location ^~ /pkginfo/ {
+        deny all;
+    }
+
+    location ^~ /report/config.xml {
+        deny all;
+    }
+
+    location ^~ /var {
+        deny all;
+    }
+
+    location /. {
+        return 404;
+    }
+
+    location @handler {
+        rewrite / /index.php;
+    }
+
+    location / {
+        root /usr/share/nginx/www/magento/web-root;
+        index index.html  index.htm  index.php;
+        try_files try_files $uri $uri/ @handler;
+    }
+
+	location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+    }
+
+}

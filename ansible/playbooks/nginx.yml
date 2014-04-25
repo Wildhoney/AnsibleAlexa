@@ -1,8 +1,26 @@
 ---
 - hosts: all
   name: Nginx
+  vars:
+
+    # Local
+
+    local_default_path: ../files/nginx/default
+    local_index_html_path: ../files/nginx/index.html
+
+    local_magento_config: ../files/nginx/config-magento
+    local_wordpress_config: ../files/nginx/config-wordpress
+
+    # Remote
+
+    remote_sites_enabled_path: /etc/nginx/sites-enabled
+    remote_sites_available_path: /etc/nginx/sites-available
+    remote_www_root_path: /usr/share/nginx/www
 
   tasks:
+
+    - name: Include Configuration
+      include_vars: ../../ansiblealexa.yml
 
     # Dependencies and PHP5
 
@@ -25,30 +43,30 @@
     # Configuration
 
     - name: Create Welcome Document
-      copy: src=../files/nginx/index.html dest=/usr/share/nginx/www owner=root group=root mode=0644 force=yes
+      copy: src={{ local_index_html_path }} dest={{ remote_www_root_path }} owner=root group=root mode=0644 force=yes
       sudo: yes
 
     - name: Create Default Configuration
-      copy: src=../files/nginx/default dest=/etc/nginx/sites-available owner=root group=root mode=0644 force=yes
+      copy: src={{ local_default_path }} dest={{ remote_sites_available_path }} owner=root group=root mode=0644 force=yes
       sudo: yes
 
-    - name: Create Magento Configuration
-      copy: src=../files/nginx/192.168.50.4 dest=/etc/nginx/sites-available owner=root group=root mode=0644 force=yes
+    - name: Template Magento Configuration
+      template: src={{ local_magento_config }} dest={{ remote_sites_available_path }}/{{ host_magento }} owner=root group=root mode=0644 force=yes
       sudo: yes
 
-    - name: Create Wordpress Configuration
-      copy: src=../files/nginx/192.168.50.5 dest=/etc/nginx/sites-available owner=root group=root mode=0644 force=yes
+    - name: Template Wordpress Configuration
+      template: src={{ local_wordpress_config }} dest={{ remote_sites_available_path }}/{{ host_wordpress }} owner=root group=root mode=0644 force=yes
       sudo: yes
 
     # Create Symlinks
 
     - name: Create Magento Symlink
-      command: ln -s /etc/nginx/sites-available/192.168.50.4 /etc/nginx/sites-enabled/192.168.50.4
+      command: ln -s {{ remote_sites_available_path }}/{{ host_magento }} {{ remote_sites_enabled_path }}/192.168.50.4
       sudo: yes
       ignore_errors: yes
 
     - name: Create Wordpress Symlink
-      command: ln -s /etc/nginx/sites-available/192.168.50.5 /etc/nginx/sites-enabled/192.168.50.5
+      command: ln -s {{ remote_sites_available_path }}/{{ host_wordpress }} {{ remote_sites_enabled_path }}/192.168.50.5
       sudo: yes
       ignore_errors: yes
 
