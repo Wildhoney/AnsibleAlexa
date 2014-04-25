@@ -41,12 +41,16 @@
       apt: pkg=php5-dev state=installed update_cache=true
       sudo: yes
 
+    - name: Install Build Essential Module
+      apt: pkg=build-essential state=installed update_cache=true
+      sudo: yes
+
     - name: Install Apache-Prefork-Dev Module
       apt: pkg=apache2-prefork-dev state=installed update_cache=true
       sudo: yes
 
     - name: Install APC
-      command: pecl install apc
+      command: printf "\n" | sudo pecl install apc
       sudo: yes
 
     - name: Create APC Configuration

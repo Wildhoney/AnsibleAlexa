@@ -53,6 +53,3 @@
 
     - name: Reindex Magento "Catalog Inventory Stock"
       command: php {{ remote_magento_shell_path }}/indexer.php --reindex cataloginventory_stock
-
-    - name: Open Welcome Page
-      command: open http://localhost:3001

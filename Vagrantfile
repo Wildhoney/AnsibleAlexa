@@ -16,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider "virtualbox" do |virtualbox|
     virtualbox.memory = 4096
-    virtualbox.cpus = 2
+    # virtualbox.cpus = 2
   end
 
   # Install all dependencies, and invoke Ansible.
