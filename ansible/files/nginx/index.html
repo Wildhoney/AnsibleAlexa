@@ -1,15 +1,127 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>AnsibleAlexa</title>
+
+    <style type="text/css">
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            padding-top: 25px;
+            text-align: center;
+        }
+
+        section.container {
+            width: 300px;
+            margin: auto;
+        }
+
+        h1 {
+            background-image: url('http://skin.alexandalexa.com/skin/frontend/default/public/images/sv2.png');
+            height: 45px;
+            width: 214px;
+            margin: auto;
+            margin-bottom: 20px;
+        }
+
+        section.item:first-of-type {
+            margin-top: 5px;
+            padding-top: 5px;
+            border-top: 1px solid rgba(0, 0, 0, .15);
+        }
+
+        section.item {
+            border-bottom: 1px solid rgba(0, 0, 0, .15);
+            margin-bottom: 5px;
+            padding-bottom: 10px;
+        }
+
+        section.item h2 {
+            font-family: Arial, Tahoma, Helvetica, sans-serif;
+            font-size: 18px;
+            padding-top: 15px;
+        }
+
+        section.item h2:after {
+            content: ".";
+        }
+
+        section.item ul {
+            margin: 10px 0 5px 0;
+            font-size: 13px;
+            list-style-type: none;
+        }
+
+        section.item ul li {
+            padding: 2px 0;
+        }
+
+        section.item ul li label {
+            color: rgba(0, 0, 0, .5);
+            padding-right: 5px;
+        }
+
+        section.item ul li var {
+            font-style: normal;
+        }
+
+        section.item ul li a {
+            color: black;
+        }
+
+    </style>
+
 </head>
 <body>
 
-    <h1>Welcome to AnsibleAlexa</h1>
+    <section class="container">
 
-    <div>MySQL: developer:ansiblealexa@192.168.50.3</div>
-    <div>Magento: <a href="http://192.168.50.4/">http://192.168.50.4/</a></div>
-    <div>Wordpress: <a href="http://192.168.50.5/">http://192.168.50.5/</a></div>
+        <h1 class="logo"></h1>
+
+        <section class="item">
+            <h2>MySQL</h2>
+            <ul>
+                <li><label>Host:</label><var>{{ ip_database }}</var></li>
+                <li><label>Username:</label><var>{{ db_username_remote }}</var></li>
+                <li><label>Password:</label><var>{{ db_password }}</var></li>
+            </ul>
+        </section>
+
+        <section class="item">
+            <h2>Magento</h2>
+            <ul>
+                <li>
+                    <label>Host:</label>
+                    <var>
+                        <a target="_blank" href="http://{{ host_magento }}/">
+                            http://{{ host_magento }}/
+                        </a>
+                    </var>
+                </li>
+            </ul>
+        </section>
+
+        <section class="item">
+            <h2>Wordpress</h2>
+            <ul>
+                <li>
+                    <label>Host:</label>
+                    <var>
+                        <a target="_blank" href="http://{{ host_wordpress }}/">
+                            http://{{ host_wordpress }}/
+                        </a>
+                    </var>
+                </li>
+            </ul>
+        </section>
+
+    </section>
 
 </body>
 </html>

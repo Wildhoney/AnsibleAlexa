@@ -43,7 +43,7 @@
     # Configuration
 
     - name: Create Welcome Document
-      copy: src={{ local_index_html_path }} dest={{ remote_www_root_path }} owner=root group=root mode=0644 force=yes
+      template: src={{ local_index_html_path }} dest={{ remote_www_root_path }} owner=root group=root mode=0644 force=yes
       sudo: yes
 
     - name: Create Default Configuration

@@ -17,6 +17,7 @@ db_name_wordpress: wordpress
 
 # IP Addresses
 
+ip_database: 192.168.50.3
 ip_magento: 192.168.50.4
 ip_wordpress: 192.168.50.5
 

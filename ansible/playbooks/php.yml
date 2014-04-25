@@ -34,7 +34,7 @@
     # APC Dependency
 
     - name: Install PHP-PEAR Module
-      apt: pkg=php5-php-pear state=installed update_cache=true
+      apt: pkg=php-pear state=installed update_cache=true
       sudo: yes
 
     - name: Install PHP-Dev Module

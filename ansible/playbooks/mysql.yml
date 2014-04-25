@@ -47,7 +47,7 @@
                   login_password={{ db_password }} login_user={{ db_username_root }}
 
     - name: Copy MySQL Configuration
-      copy: src={{ local_my_cnf_path }} dest={{ remote_my_cnf_path }} owner=root group=root mode=0644 force=yes
+      template: src={{ local_my_cnf_path }} dest={{ remote_my_cnf_path }} owner=root group=root mode=0644 force=yes
       sudo: yes
 
     - name: Restarting MySQL Server
