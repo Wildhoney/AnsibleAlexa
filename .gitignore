@@ -2,4 +2,4 @@
 /.vagrant
 /websites/*
 !/websites/.gitkeep
-/files/database/*.sql
+/ansible/files/database/*.sql
