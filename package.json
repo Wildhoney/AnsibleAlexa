@@ -1,6 +1,6 @@
 {
   "name": "AnsibleAlexa",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "AnsibleAlexa ============",
   "main": "Vagrantfile",
   "scripts": {
