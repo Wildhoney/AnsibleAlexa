@@ -20,7 +20,8 @@ server {
 
     location ~ [^/]\.php(/|$) {
 
-    if (!-e $request_filename) { rewrite / /index.php last; } #;
+        if (!-e $request_filename) { rewrite / /index.php last; } #;
+
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param MAGE_ROOT_DIR /var/www;
         fastcgi_pass  127.0.0.1:9000;
@@ -29,6 +30,7 @@ server {
         fastcgi_param MAGE_IS_DEVELOPER_MODE 1;
         include fastcgi_params;
         fastcgi_read_timeout 18000;
+
     }
 
     location  ~ /(content)/ {
