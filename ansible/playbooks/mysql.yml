@@ -59,7 +59,7 @@
     - name: Check Magento Database
       mysql_db: name={{ db_name_magento }} state=present
                 login_password={{ db_password }} login_user={{ db_username_root }}
-      notify: Copy Magento DB
+      notify: Template Magento DB
 
     - name: Check Wordpress Database
       mysql_db: name={{ db_name_wordpress }} state=present
@@ -70,8 +70,8 @@
 
     # Magento
 
-    - name: Copy Magento DB
-      copy: src={{ db_magento_local_path }} dest={{ db_magento_remote_path }} owner=root group=root mode=0644
+    - name: Template Magento DB
+      template: src={{ db_magento_local_path }} dest={{ db_magento_remote_path }} owner=root group=root mode=0644
       notify: Import Magento
       sudo: yes
 
