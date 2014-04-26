@@ -48,6 +48,15 @@
     - name: Reindex Magento "Catalog Category Flat"
       command: php {{ remote_magento_shell_path }}/indexer.php --reindex catalog_category_flat
 
+    - name: Reindex Magento "Catalog Category Product"
+      command: php {{ remote_magento_shell_path }}/indexer.php --reindex catalog_category_product
+
+    - name: Reindex Magento "Catalog Product Prices"
+      command: php {{ remote_magento_shell_path }}/indexer.php --reindex catalog_product_price
+
+    - name: Reindex Magento "Catalog Product Attributes"
+      command: php {{ remote_magento_shell_path }}/indexer.php --reindex catalog_product_attribute
+
     - name: Reindex Magento "Catalog URL"
       command: php {{ remote_magento_shell_path }}/indexer.php --reindex catalog_url
 

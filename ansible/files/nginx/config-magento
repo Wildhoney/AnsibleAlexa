@@ -4,7 +4,7 @@ server {
     index index.php index.html index.htm;
 
     server_name {{ host_magento }};
-    sendfile off;
+    # sendfile off;
 
     access_log /var/log/nginx/magento.log;
     error_log /var/log/nginx/magento.log;
@@ -23,11 +23,11 @@ server {
         if (!-e $request_filename) { rewrite / /index.php last; } #;
 
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param MAGE_ROOT_DIR /var/www;
+        fastcgi_param MAGE_ROOT_DIR /usr/share/nginx/www/magento;
         fastcgi_pass  127.0.0.1:9000;
         fastcgi_index index.php;
         fastcgi_param HTTP_HOST {{ host_magento }};
-        fastcgi_param MAGE_IS_DEVELOPER_MODE 1;
+        # fastcgi_param MAGE_IS_DEVELOPER_MODE 1;
         include fastcgi_params;
         fastcgi_read_timeout 18000;
 

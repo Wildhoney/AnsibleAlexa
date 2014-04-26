@@ -31,30 +31,8 @@
       apt: pkg=php5-cli state=installed update_cache=true
       sudo: yes
 
-    # APC Dependency
-
-    - name: Install PHP-PEAR Module
-      apt: pkg=php-pear state=installed update_cache=true
-      sudo: yes
-
-    - name: Install PHP-Dev Module
-      apt: pkg=php5-dev state=installed update_cache=true
-      sudo: yes
-
-    - name: Install Build Essential Module
-      apt: pkg=build-essential state=installed update_cache=true
-      sudo: yes
-
-    - name: Install Apache-Prefork-Dev Module
-      apt: pkg=apache2-prefork-dev state=installed update_cache=true
-      sudo: yes
-
-    - name: Install APC
-      command: printf "\n" | sudo pecl install apc
-      sudo: yes
-
-    - name: Create APC Configuration
-      copy: src={{ local_apc_ini_path }} dest={{ remote_apc_ini_path }} owner=root group=root mode=0644 force=yes
+    - name: Install PHP-APC Module
+      apt: pkg=php-apc state=installed update_cache=true
       sudo: yes
 
     # Finalise
