@@ -1,0 +1,19 @@
+{
+  "name": "AnsibleAlexa",
+  "version": "0.1.0",
+  "description": "AnsibleAlexa ============",
+  "main": "Vagrantfile",
+  "scripts": {
+    "test": "Vagrantfile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Wildhoney/AnsibleAlexa.git"
+  },
+  "author": "Adam Timberlake <adam.timberlake@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wildhoney/AnsibleAlexa/issues"
+  },
+  "homepage": "https://github.com/Wildhoney/AnsibleAlexa"
+}
