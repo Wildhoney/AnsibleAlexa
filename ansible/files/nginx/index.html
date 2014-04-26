@@ -28,7 +28,7 @@
         }
 
         section.container {
-            width: 300px;
+            width: 630px;
             margin: auto;
         }
 
@@ -81,7 +81,8 @@
             font-style: normal;
         }
 
-        section.item ul li a {
+        section.item ul li a, section.item ul li a:visited {
+            font-style: normal;
             color: black;
         }
 
@@ -106,8 +107,8 @@
         <section class="item">
             <h2>Magento</h2>
             <ul>
-                <li>
                 <li><label>IP Address:</label><var>{{ ip_magento }}</var></li>
+                <li>
                     <label>Host:</label>
                     <var>
                         <a target="_blank" href="http://{{ host_magento }}/">
