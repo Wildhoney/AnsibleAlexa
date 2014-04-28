@@ -3,18 +3,16 @@
 
 # Dependencies.
 require 'yaml'
-require 'json'
 
-# Parse the configuration file, and the npm file.
-yamlConfig = YAML.load_file('ansiblealexa.yml')
-npmConfig  = JSON.parse(File.read('package.json'))
+# Parse the configuration file.
+options = YAML.load_file('ansiblealexa.yml')
 
 VAGRANTFILE_API_VERSION = "2"
 
 # IP addresses for the various components.
-ipDatabase  = "#{yamlConfig['ip_database']}"
-ipMagento   = "#{yamlConfig['ip_magento']}"
-ipWordpress = "#{yamlConfig['ip_wordpress']}"
+ipDatabase  = "#{options['ip_database']}"
+ipMagento   = "#{options['ip_magento']}"
+ipWordpress = "#{options['ip_wordpress']}"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
@@ -32,8 +30,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     virtualbox.cpus   = 2
   end
 
-  # Run playbooks from the "presync" object in the "package.json".
-  npmConfig['vagrant']['presync'].each do |playbook|
+  # Run playbooks from the "pre_sync" object.
+  options['playbooks']['pre_sync'].each do |playbook|
 
       config.vm.provision "ansible" do |ansible|
         ansible.playbook = "ansible/playbooks/#{playbook}.yml"
@@ -49,8 +47,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "./websites/wordpress", "/usr/share/nginx/www/wordpress",
                           create: true, owner: "root", group: "root"
 
-  # Run playbooks from the "postsync" object in the "package.json".
-  npmConfig['vagrant']['postsync'].each do |playbook|
+  # Run playbooks from the "post_sync" object.
+  options['playbooks']['post_sync'].each do |playbook|
 
       config.vm.provision "ansible" do |ansible|
         ansible.playbook = "ansible/playbooks/#{playbook}.yml"

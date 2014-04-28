@@ -36,3 +36,17 @@ host_wordpress: wordpress.dev.alexandalexa.com
 
 repository_magento: git@github.com:alexandalexa/hephaestus.git
 repository_wordpress: git@github.com:alexandalexa/Wordpress.git
+
+# Playbooks
+playbooks:
+
+  pre_sync:
+    - repository
+
+  post_sync:
+    - nginx
+    - php
+    - mysql
+    - config
+    - sshfs
+    - hosts
