@@ -27,6 +27,10 @@
       apt: pkg=php5-memcache state=installed update_cache=true
       sudo: yes
 
+    - name: Install PHP-MCrypt Module
+      apt: pkg=php5-mcrypt state=installed update_cache=true
+      sudo: yes
+
     - name: Install PHP-CLI Module
       apt: pkg=php5-cli state=installed update_cache=true
       sudo: yes
