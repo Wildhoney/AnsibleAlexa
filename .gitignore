@@ -1,5 +1,6 @@
 /.idea
 /.vagrant
+/ansiblealexa.yml
 /websites/*
 !/websites/.gitkeep
 /ansible/files/database/*.sql

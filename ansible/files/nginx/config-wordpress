@@ -30,4 +30,8 @@ server {
         include fastcgi_params;
     }
 
+    location @handler {
+        rewrite / /index.php;
+    }
+
 }

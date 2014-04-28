@@ -4,11 +4,11 @@ server {
     index index.php index.html index.htm;
 
     server_name {{ host_magento }};
-    # sendfile off;
+    sendfile off;
 
     access_log /var/log/nginx/magento.log;
     error_log /var/log/nginx/magento.log;
-    
+
     location ^~ /app/ {
         deny all;
     }
@@ -23,7 +23,7 @@ server {
         if (!-e $request_filename) { rewrite / /index.php last; } #;
 
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param MAGE_ROOT_DIR /;
+        fastcgi_param MAGE_ROOT_DIR /usr/share/nginx/www/magento;
         fastcgi_pass  127.0.0.1:9000;
         fastcgi_index index.php;
         fastcgi_param HTTP_HOST {{ host_magento }};
@@ -31,15 +31,6 @@ server {
         include fastcgi_params;
         fastcgi_read_timeout 18000;
 
-    }
-
-    location  ~ /(content)/ {
-        # fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name/Wordpress;
-        # fastcgi_pass  127.0.0.1:9000;
-        # fastcgi_index index.php;
-        # fastcgi_param HTTP_HOST blog.alexandalexa.com;
-        # include fastcgi_params;
-        # fastcgi_read_timeout 18000;
     }
 
     location ^~ /includes/ {
@@ -76,7 +67,7 @@ server {
 
     location / {
         root /usr/share/nginx/www/magento/web-root;
-        index index.html  index.htm  index.php;
+        index index.html index.htm  index.php;
         try_files try_files $uri $uri/ @handler;
     }
 

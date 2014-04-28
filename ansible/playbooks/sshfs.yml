@@ -1,0 +1,41 @@
+---
+- hosts: all
+  name: SSHFS
+  vars:
+
+    remote_media_directory: /usr/share/nginx/www/magento/web-root/media
+    ssh_media_directory: /var/www/master.dev.alexandalexa.com/web-root/media
+
+  tasks:
+
+    - name: Include Configuration
+      include_vars: ../../ansiblealexa.yml
+
+    - name: Install SSHFS
+      apt: pkg=sshfs state=installed update_cache=true
+      sudo: yes
+
+    - name: Remove Media Directory
+      command: rm -rf {{ remote_media_directory }}
+      sudo: yes
+      ignore_errors: yes
+
+    - name: Copy SSHFS Configuration
+      copy: src=../files/sshfs/fuse.conf dest=/etc/fuse.conf owner=root group=root mode=0644 force=yes
+      sudo: yes
+
+    - name: Copy SSH Configuration
+      copy: src=../files/sshfs/ssh_config dest=/etc/ssh/ssh_config owner=root group=root mode=0644 force=yes
+      sudo: yes
+
+    - name: Add User to Fuse Group
+      command: gpasswd -a $USER fuse
+      sudo: yes
+      
+    - name: Create Media Directory
+      command: mkdir {{ remote_media_directory }}
+      sudo: yes
+
+    - name: Mount Media Directory
+      command: echo {{ ssh_password }} | sshfs -o password_stdin,allow_other,idmap=user {{ ssh_user }}@{{ ssh_server }}:{{ ssh_media_directory }} {{ remote_media_directory }}
+      sudo: yes

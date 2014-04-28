@@ -1,5 +1,11 @@
 ---
 
+# SSH Details
+
+ssh_server: aatest.alexandalexa.com
+ssh_user: ***
+ssh_password: ***
+
 # Personal Details
 
 user_email: adam@alexandalexa.com
