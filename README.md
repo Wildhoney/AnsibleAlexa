@@ -30,3 +30,8 @@ From then on all you need to do is modify your hosts file to represent the IP ad
 192.168.50.4 magento.dev.alexandalexa.com
 192.168.50.5 wordpress.dev.alexandalexa.com
 ```
+
+Known Issues
+---
+
+When your computer loses connectivity, but Vagrant remains awake, SSHFS will unmount the `media` directory &ndash; this can be remedied by running `vagrant provision`.
