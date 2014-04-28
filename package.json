@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Wildhoney/AnsibleAlexa/issues"
   },
-  "homepage": "https://github.com/Wildhoney/AnsibleAlexa"
+  "homepage": "https://github.com/Wildhoney/AnsibleAlexa",
+  "vagrant": {
+      "presync": ["repository"],
+      "postsync": ["nginx", "php", "mysql", "config", "sshfs", "hosts"]
+  }
 }

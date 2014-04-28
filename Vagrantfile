@@ -1,15 +1,20 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# Dependencies.
 require 'yaml'
-config = YAML.load_file('ansiblealexa.yml')
+require 'json'
+
+# Parse the configuration file, and the npm file.
+yamlConfig = YAML.load_file('ansiblealexa.yml')
+npmConfig  = JSON.parse(File.read('package.json'))
 
 VAGRANTFILE_API_VERSION = "2"
 
 # IP addresses for the various components.
-ipDatabase  = "#{config['ip_database']}"
-ipMagento   = "#{config['ip_magento']}"
-ipWordpress = "#{config['ip_wordpress']}"
+ipDatabase  = "#{yamlConfig['ip_database']}"
+ipMagento   = "#{yamlConfig['ip_magento']}"
+ipWordpress = "#{yamlConfig['ip_wordpress']}"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
@@ -27,10 +32,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     virtualbox.cpus   = 2
   end
 
-  # Install all dependencies, and invoke Ansible.
+  # Run playbooks from the "presync" object in the "package.json".
+  npmConfig['vagrant']['presync'].each do |playbook|
 
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/playbooks/repository.yml"
+      config.vm.provision "ansible" do |ansible|
+        ansible.playbook = "ansible/playbooks/#{playbook}.yml"
+      end
+
   end
 
   # Configure the synchronised directories.
@@ -41,28 +49,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "./websites/wordpress", "/usr/share/nginx/www/wordpress",
                           create: true, owner: "root", group: "root"
 
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/playbooks/nginx.yml"
-  end
+  # Run playbooks from the "postsync" object in the "package.json".
+  npmConfig['vagrant']['postsync'].each do |playbook|
 
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/playbooks/php.yml"
-  end
+      config.vm.provision "ansible" do |ansible|
+        ansible.playbook = "ansible/playbooks/#{playbook}.yml"
+      end
 
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/playbooks/mysql.yml"
-  end
-
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/playbooks/config.yml"
-  end
-
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/playbooks/sshfs.yml"
-  end
-
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/playbooks/hosts.yml"
   end
 
 end

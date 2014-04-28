@@ -19,7 +19,7 @@ All of the AnsibleAlexa configuration exists in the **ansiblealexa.yml** file in
 
 Once you've created the YAML configuration file, most of the values should be correct. However, you'll need to modify the `user_email` key, and define the `ssh_user` and `ssh_password` values which pertain to the remote server where the media directory exists.
 
-You can then issue the command `vagrant up` to begin the whole process!
+You can then issue the command `bundle install` and then `vagrant up` to begin the whole process!
 
 <img src="http://i.imgur.com/eKzKoll.png" alt="Vagrant up command" />
 
