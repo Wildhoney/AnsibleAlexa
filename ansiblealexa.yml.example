@@ -29,6 +29,8 @@ ip_wordpress: 192.168.50.5
 
 # Port for Vagrant
 vagrant_port: 3001
+vagrant_cpus: 2
+vagrant_memory: 4096
 
 # Hostnames
 
