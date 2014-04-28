@@ -23,6 +23,9 @@ You can then issue the command `vagrant up` to begin the whole process!
 
 <img src="http://i.imgur.com/eKzKoll.png" alt="Vagrant up command" />
 
+Welcome Screen
+------------
+
 Considering everything ran successfully, you should be presented with the details that you defined in the configuration.
 
 <img src="http://i.imgur.com/p9i2llV.png" alt="Welcome screen" />
