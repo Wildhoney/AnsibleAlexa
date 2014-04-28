@@ -13,9 +13,9 @@ It also mounts the `media` directory using <a href="http://fuse.sourceforge.net/
 Getting Started
 ---
 
-All of the AnsibleAlexa configuration exists in the **ansiblealexa.yml** file in the root directory. There is an example provided as **ansiblealexa.yml.example** that you'll need to copy and modify.
+All of the AnsibleAlexa configuration exists in the **ansiblealexa.yml** file in the root directory. There is an example provided as **example.ansiblealexa.yml** that you'll need to copy and modify.
 
-`cp ansiblealexa.yml.example ansiblealexa.yml`
+`cp example.ansiblealexa.yml ansiblealexa.yml`
 
 Once you've created the YAML configuration file, most of the values should be correct. However, you'll need to modify the `user_email` key, and define the `ssh_user` and `ssh_password` values which pertain to the remote server where the media directory exists.
 
