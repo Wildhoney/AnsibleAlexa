@@ -27,19 +27,19 @@
 
     - name: Copy Wordpress Configuration
       template: src={{ local_wordpress_wpconfig_path }} dest={{ remote_wordpress_wpconfig_path }}
-                owner=root group=root mode=0644
+                
       sudo: yes
 
     # Magento
 
     - name: Template Magento Local.xml
       template: src={{ local_magento_local_xml_path }} dest={{ remote_magento_local_xml_path }}
-                owner=root group=root mode=0644
+                
       sudo: yes
 
     - name: Template Magento Domains.php
       template: src={{ local_magento_domains_path }} dest={{ remote_magento_domains_path }}
-                owner=root group=root mode=0644
+                
       sudo: yes
 
     - name: Reindex Magento "Catalog Product Flat"

@@ -42,10 +42,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Configure the synchronised directories.
 
   config.vm.synced_folder "./websites/magento", "/usr/share/nginx/www/magento",
-                          create: true, owner: "root", group: "root"
+                          create: true, nfs: true
 
   config.vm.synced_folder "./websites/wordpress", "/usr/share/nginx/www/wordpress",
-                          create: true, owner: "root", group: "root"
+                          create: true, nfs: true
 
   # Run playbooks from the "post_sync" object.
   options['playbooks']['post_sync'].each do |playbook|

@@ -47,7 +47,7 @@
                   login_password={{ db_password }} login_user={{ db_username_root }}
 
     - name: Copy MySQL Configuration
-      template: src={{ local_my_cnf_path }} dest={{ remote_my_cnf_path }} owner=root group=root mode=0644 force=yes
+      template: src={{ local_my_cnf_path }} dest={{ remote_my_cnf_path }} force=yes
       sudo: yes
 
     - name: Restarting MySQL Server
@@ -71,7 +71,7 @@
     # Magento
 
     - name: Template Magento DB
-      template: src={{ db_magento_local_path }} dest={{ db_magento_remote_path }} owner=root group=root mode=0644
+      template: src={{ db_magento_local_path }} dest={{ db_magento_remote_path }} 
       notify: Import Magento
       sudo: yes
 
@@ -88,7 +88,7 @@
     # Wordpress
 
     - name: Template Wordpress DB
-      template: src={{ db_wordpress_local_path }} dest={{ db_wordpress_remote_path }} owner=root group=root mode=0644
+      template: src={{ db_wordpress_local_path }} dest={{ db_wordpress_remote_path }} 
       notify: Import Wordpress
       sudo: yes
 

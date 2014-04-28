@@ -21,11 +21,11 @@
       ignore_errors: yes
 
     - name: Copy SSHFS Configuration
-      copy: src=../files/sshfs/fuse.conf dest=/etc/fuse.conf owner=root group=root mode=0644 force=yes
+      copy: src=../files/sshfs/fuse.conf dest=/etc/fuse.conf force=yes
       sudo: yes
 
     - name: Copy SSH Configuration
-      copy: src=../files/sshfs/ssh_config dest=/etc/ssh/ssh_config owner=root group=root mode=0644 force=yes
+      copy: src=../files/sshfs/ssh_config dest=/etc/ssh/ssh_config force=yes
       sudo: yes
 
     - name: Add User to Fuse Group

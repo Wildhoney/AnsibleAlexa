@@ -47,6 +47,7 @@ playbooks:
 
   pre_sync:
     - repository
+    - nfs
 
   post_sync:
     - nginx
