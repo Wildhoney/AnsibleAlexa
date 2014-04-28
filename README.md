@@ -21,7 +21,7 @@ Once you've created the YAML configuration file, most of the values should be co
 
 You can then issue the command `vagrant up` to begin the whole process!
 
-<img src="http://i.imgur.com/UYpTvbE.png" alt="Vagrant up command" />
+<img src="http://i.imgur.com/eKzKoll.png" alt="Vagrant up command" />
 
 Considering everything ran successfully, you should be presented with the details that you defined in the configuration.
 
