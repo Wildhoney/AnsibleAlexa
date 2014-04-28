@@ -26,7 +26,7 @@ You can then issue the command `bundle install` and then `vagrant up` to begin t
 Welcome Screen
 ------------
 
-Considering everything ran successfully, you should be presented with the details that you defined in the configuration.
+Considering everything ran successfully, you should be presented with the details that you defined in the configuration. The settings demonstrate how you can load the Magento and Wordpress instances &ndash; as well as connecting remotely with MySQL.
 
 <img src="http://i.imgur.com/p9i2llV.png" alt="Welcome screen" />
 
