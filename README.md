@@ -22,3 +22,14 @@ Once you've created the YAML configuration file, most of the values should be co
 You can then issue the command `vagrant up` to begin the whole process!
 
 <img src="http://i.imgur.com/WyTqeI2.png" alt="Vagrant up command" />
+
+Considering everything ran successfully, you should be presented with the details that you defined in the configuration.
+
+<img src="http://i.imgur.com/p9i2llV.png" alt="Welcome screen" />
+
+From then on all you need to do is modify your hosts file to represent the IP addresses shown in the welcome screen above &ndash; yours may differ depending on your configuration.
+
+```
+192.168.50.4 magento.dev.alexandalexa.com
+192.168.50.5 wordpress.dev.alexandalexa.com
+```

@@ -58,7 +58,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision "ansible" do |ansible|
-    ansible.verbose = "vvvv"
     ansible.playbook = "ansible/playbooks/sshfs.yml"
   end
 
