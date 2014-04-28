@@ -37,5 +37,5 @@
       sudo: yes
 
     - name: Mount Media Directory
-      shell: sudo echo {{ ssh_password }} | sudo sshfs -o password_stdin,allow_other,idmap=user {{ ssh_user }}@{{ ssh_server }}:{{ ssh_media_directory }} {{ remote_media_directory }}
+      shell: sudo echo {{ ssh_password }} | sudo sshfs -o password_stdin,allow_other,idmap=user {{ ssh_username }}@{{ ssh_server }}:{{ ssh_media_directory }} {{ remote_media_directory }}
       sudo: yes

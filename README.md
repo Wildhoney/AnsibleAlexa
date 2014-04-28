@@ -28,123 +28,72 @@ Options Overview
 
 In the **ansiblealexa.yml** configuration file you can find the following options.
 
-<table>
-    <tr>
-        <th>Key</th>
-        <th>Default Value</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td><code>ssh_server</code></td>
-        <td><code>aatest.alexandalexa.com</code></td>
-        <td>Server which stores the <code>media</code> directory &ndash; will be mounted using <a href="http://fuse.sourceforge.net/sshfs.html" target="_blank">SSHFS</a>.</td>
-    </tr>
-    <tr>
-        <td><code>ssh_user</code></td>
-        <td><code><em>None</em></code></td>
-        <td>Username for the aforementioned SSH address.</td>
-    </tr>
-    <tr>
-        <td><code>ssh_password</code></td>
-        <td><code><em>None</em></code></td>
-        <td>Password for the aforementioned SSH address.</td>
-    </tr>
-    <tr>
-        <td><code>user_email</code></td>
-        <td><code>user@alexandalexa.com</code></td>
-        <td>Used for the Magento and Wordpress installations.</td>
-    </tr>
-    <tr>
-        <td><code>db_username_root</code></td>
-        <td><code>root</code></td>
-        <td>MySQL username for root access.</td>
-    </tr>
-    <tr>
-        <td><code>db_username_remote</code></td>
-        <td><code>developer</code></td>
-        <td>MySQL username for remote access.</td>
-    </tr>
-    <tr>
-        <td><code>db_hostname</code></td>
-        <td><code>localhost</code></td>
-        <td>MySQL address for the root connection.</td>
-    </tr>
-    <tr>
-        <td><code>db_password</code></td>
-        <td><code>ansiblealexa</code></td>
-        <td>MySQL password for both <code>root</code> and <code>developer</code> connections.</td>
-    </tr>
-    <tr>
-        <td><code>db_name_magento</code></td>
-        <td><code>magento</code></td>
-        <td>Name for the Magento MySQL database.</td>
-    </tr>
-    <tr>
-        <td><code>db_name_wordpress</code></td>
-        <td><code>wordpress</code></td>
-        <td>Name for the Wordpress MySQL database.</td>
-    </tr>
-    <tr>
-        <td><code>ip_database</code></td>
-        <td><code>192.168.50.3</code></td>
-        <td>IP address used to connect to the Vagrant database with <code>developer</code>.</td>
-    </tr>
-    <tr>
-        <td><code>ip_magento</code></td>
-        <td><code>192.168.50.4</code></td>
-        <td>IP address that <code>magento.dev.alexandalexa.com</code> should map to.</td>
-    </tr>
-    <tr>
-        <td><code>ip_wordpress</code></td>
-        <td><code>192.168.50.5</code></td>
-        <td>IP address that <code>wordpress.dev.alexandalexa.com</code> should map to.</td>
-    </tr>
-    <tr>
-        <td><code>vagrant_port</code></td>
-        <td><code>3001</code></td>
-        <td>Port that the Vagrant instance accepts connections on.</td>
-    </tr>
-    <tr>
-        <td><code>vagrant_cpus</code></td>
-        <td><code>2</code></td>
-        <td>Amount of CPUs that Vagrant will attempt to utilise.</td>
-    </tr>
-    <tr>
-        <td><code>vagrant_memory</code></td>
-        <td><code>4096</code></td>
-        <td>Amount of memory in MB allocated to the Vagrant instance.</td>
-    </tr>
-    <tr>
-        <td><code>host_magento</code></td>
-        <td><code>magento.dev.alexandalexa.com</code></td>
-        <td>Domain used for the Nginx configuration that maps to <code>192.168.50.4</code>.</td>
-    </tr>
-    <tr>
-        <td><code>host_wordpress</code></td>
-        <td><code>wordpress.dev.alexandalexa.com</code></td>
-        <td>Domain used for the Nginx configuration that maps to <code>192.168.50.5</code>.</td>
-    </tr>
-    <tr>
-        <td><code>repository_magento</code></td>
-        <td><code>git@github.com:alexandalexa/hephaestus.git</code></td>
-        <td>GitHub repository which contains the Magento codebase.</td>
-    </tr>
-    <tr>
-        <td><code>repository_wordpress</code></td>
-        <td><code>git@github.com:alexandalexa/Wordpress.git</code></td>
-        <td>GitHub repository which contains the Wordpress codebase.</td>
-    </tr>
-    <tr>
-        <td><code>playbooks.pre_sync</code></td>
-        <td><code>Array</code></td>
-        <td>Playbooks which are played prevenient to the mounting of the devices.</td>
-    </tr>
-    <tr>
-        <td><code>playbooks.post_sync</code></td>
-        <td><code>Array</code></td>
-        <td>Playbooks which are played subsequent to the mounting of the devices.</td>
-    </tr>
-</table>
+```
+# SSH Details
+# Usage: Required for mounting the `media` directory using SSHFS.
+ssh_server: aatest.alexandalexa.com
+ssh_username: ***
+ssh_password: ***
+
+# Personal Details
+# Usage: Used for the Magento and Wordpress installations.
+user_email: user@alexandalexa.com
+
+# Database Credentials
+# Usage: Connections for root and remote using a single password
+#        as defined in `db_password`.
+db_username_root: root
+db_username_remote: developer
+
+db_hostname: localhost
+db_password: ansiblealexa
+
+db_name_magento: magento
+db_name_wordpress: wordpress
+
+# IP Addresses
+# Usage: IP addresses that map to `host_magento` and `host_wordpress`
+#        respectively - `ip_database` is used for the remote MySQL
+#        connection.
+ip_database: 192.168.50.3
+ip_magento: 192.168.50.4
+ip_wordpress: 192.168.50.5
+
+# Vagrant
+# Usage: Port Vagrant listens for incoming connections on, as well as
+#        CPUs used, and the memory in MB allocated to the Vagrant instance.
+vagrant_port: 3001
+vagrant_cpus: 2
+vagrant_memory: 4096
+
+# Hostnames
+# Usage: Hostnames that should be mapped to the IP addresses defined above.
+host_magento: magento.dev.alexandalexa.com
+host_wordpress: wordpress.dev.alexandalexa.com
+
+# Repositories
+# Usage: GitHub repositories that hold the Magento and Wordpress code-bases.
+repository_magento: git@github.com:alexandalexa/hephaestus.git
+repository_wordpress: git@github.com:alexandalexa/Wordpress.git
+
+# Playbooks
+# Usage: Complete list of playbooks that will be played during a `vagrant provision`.
+playbooks:
+
+  # Usage: Playbooks that are played prevenient to mounting the devices.
+  pre_sync:
+    - repository
+    - nfs
+
+  # Usage: Playbooks that are played subsequent to mounting the devices.
+  post_sync:
+    - nginx
+    - php
+    - mysql
+    - config
+    - sshfs
+    - hosts
+```
 
 Welcome Screen
 ------------
