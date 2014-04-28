@@ -23,6 +23,129 @@ You can then issue the command `bundle install` and then `vagrant up` to begin t
 
 <img src="http://i.imgur.com/eKzKoll.png" alt="Vagrant up command" />
 
+Options Overview
+------------
+
+In the **ansiblealexa.yml** configuration file you can find the following options.
+
+<table>
+    <tr>
+        <th>Key</th>
+        <th>Default Value</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>ssh_server</code></td>
+        <td>aatest.alexandalexa.com</td>
+        <td>Server which stores the <code>media</code> directory &ndash; will be mounted using <a href="http://fuse.sourceforge.net/sshfs.html" target="_blank">SSHFS</a>.</td>
+    </tr>
+    <tr>
+        <td><code>ssh_user</code></td>
+        <td><em>None</em></td>
+        <td>Username for the aforementioned SSH address.</td>
+    </tr>
+    <tr>
+        <td><code>ssh_password</code></td>
+        <td><em>None</em></td>
+        <td>Password for the aforementioned SSH address.</td>
+    </tr>
+    <tr>
+        <td><code>user_email</code></td>
+        <td>user@alexandalexa.com</td>
+        <td>Used for the Magento and Wordpress installations.</td>
+    </tr>
+    <tr>
+        <td><code>db_username_root</code></td>
+        <td>root</td>
+        <td>MySQL username for root access.</td>
+    </tr>
+    <tr>
+        <td><code>db_username_remote</code></td>
+        <td>developer</td>
+        <td>MySQL username for remote access.</td>
+    </tr>
+    <tr>
+        <td><code>db_hostname</code></td>
+        <td>localhost</td>
+        <td>MySQL address for the root connection.</td>
+    </tr>
+    <tr>
+        <td><code>db_password</code></td>
+        <td>ansiblealexa</td>
+        <td>MySQL password for both <code>root</code> and <code>developer</code> connections.</td>
+    </tr>
+    <tr>
+        <td><code>db_name_magento</code></td>
+        <td>magento</td>
+        <td>Name for the Magento MySQL database.</td>
+    </tr>
+    <tr>
+        <td><code>db_name_wordpress</code></td>
+        <td>wordpress</td>
+        <td>Name for the Wordpress MySQL database.</td>
+    </tr>
+    <tr>
+        <td><code>ip_database</code></td>
+        <td>192.168.50.3</td>
+        <td>IP address used to connect to the Vagrant database with <code>developer</code>.</td>
+    </tr>
+    <tr>
+        <td><code>ip_magento</code></td>
+        <td>192.168.50.4</td>
+        <td>IP address that <code>magento.dev.alexandalexa.com</code> should map to.</td>
+    </tr>
+    <tr>
+        <td><code>ip_wordpress</code></td>
+        <td>192.168.50.5</td>
+        <td>IP address that <code>wordpress.dev.alexandalexa.com</code> should map to.</td>
+    </tr>
+    <tr>
+        <td><code>vagrant_port</code></td>
+        <td>3001</td>
+        <td>Port that the Vagrant instance accepts connections on.</td>
+    </tr>
+    <tr>
+        <td><code>vagrant_cpus</code></td>
+        <td>3001</td>
+        <td>Amount of CPUs that Vagrant will attempt to utilise.</td>
+    </tr>
+    <tr>
+        <td><code>vagrant_memory</code></td>
+        <td>4096</td>
+        <td>Amount of memory in MB allocated to the Vagrant instance.</td>
+    </tr>
+    <tr>
+        <td><code>host_magento</code></td>
+        <td>magento.dev.alexandalexa.com</td>
+        <td>Domain used for the Nginx configuration that maps to <code>192.168.50.4</code>.</td>
+    </tr>
+    <tr>
+        <td><code>host_wordpress</code></td>
+        <td>wordpress.dev.alexandalexa.com</td>
+        <td>Domain used for the Nginx configuration that maps to <code>192.168.50.5</code>.</td>
+    </tr>
+    <tr>
+        <td><code>repository_magento</code></td>
+        <td>git@github.com:alexandalexa/hephaestus.git</td>
+        <td>GitHub repository which contains the Magento codebase.</td>
+    </tr>
+    <tr>
+        <td><code>repository_wordpress</code></td>
+        <td>git@github.com:alexandalexa/Wordpress.git</td>
+        <td>GitHub repository which contains the Wordpress codebase.</td>
+    </tr>
+    <tr>
+        <td><code>playbooks.pre_sync</code></td>
+        <td><code>Array</code></td>
+        <td>Playbooks which are played prevenient to the mounting of the devices.</td>
+    </tr>
+    <tr>
+        <td><code>playbooks.post_sync</code></td>
+        <td><code>Array</code></td>
+        <td>Playbooks which are played subsequent to the mounting of the devices.</td>
+    </tr>
+</table>
+
 Welcome Screen
 ------------
 
