@@ -10,9 +10,9 @@ options = YAML.load_file('ansiblealexa.yml')
 VAGRANTFILE_API_VERSION = "2"
 
 # IP addresses for the various components.
-ipDatabase  = "#{options['ip_database']}"
-ipMagento   = "#{options['ip_magento']}"
-ipWordpress = "#{options['ip_wordpress']}"
+ip_database  = "#{options['ip_database']}"
+ip_magento   = "#{options['ip_magento']}"
+ip_wordpress = "#{options['ip_wordpress']}"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
@@ -20,14 +20,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-  config.vm.network "forwarded_port", guest: 80, host: 3001
-  config.vm.network "private_network", ip: ipDatabase
-  config.vm.network "private_network", ip: ipMagento
-  config.vm.network "private_network", ip: ipWordpress
+  config.vm.network "forwarded_port", guest: 80, host: options['vagrant_port']
+  config.vm.network "private_network", ip: ip_database
+  config.vm.network "private_network", ip: ip_magento
+  config.vm.network "private_network", ip: ip_wordpress
 
   config.vm.provider "virtualbox" do |virtualbox|
-    virtualbox.memory = 4096
-    virtualbox.cpus   = 2
+    virtualbox.memory = options['vagrant_memory']
+    virtualbox.cpus   = options['vagrant_cpus']
   end
 
   # Run playbooks from the "pre_sync" object.

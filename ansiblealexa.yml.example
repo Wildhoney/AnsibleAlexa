@@ -27,6 +27,9 @@ ip_database: 192.168.50.3
 ip_magento: 192.168.50.4
 ip_wordpress: 192.168.50.5
 
+# Port for Vagrant
+vagrant_port: 3001
+
 # Hostnames
 
 host_magento: magento.dev.alexandalexa.com
