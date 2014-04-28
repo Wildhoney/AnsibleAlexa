@@ -36,102 +36,102 @@ In the **ansiblealexa.yml** configuration file you can find the following option
     </tr>
     <tr>
         <td><code>ssh_server</code></td>
-        <td>aatest.alexandalexa.com</td>
+        <td><code>aatest.alexandalexa.com</code></td>
         <td>Server which stores the <code>media</code> directory &ndash; will be mounted using <a href="http://fuse.sourceforge.net/sshfs.html" target="_blank">SSHFS</a>.</td>
     </tr>
     <tr>
         <td><code>ssh_user</code></td>
-        <td><em>None</em></td>
+        <td><code><em>None</em></code></td>
         <td>Username for the aforementioned SSH address.</td>
     </tr>
     <tr>
         <td><code>ssh_password</code></td>
-        <td><em>None</em></td>
+        <td><code><em>None</em></code></td>
         <td>Password for the aforementioned SSH address.</td>
     </tr>
     <tr>
         <td><code>user_email</code></td>
-        <td>user@alexandalexa.com</td>
+        <td><code>user@alexandalexa.com</code></td>
         <td>Used for the Magento and Wordpress installations.</td>
     </tr>
     <tr>
         <td><code>db_username_root</code></td>
-        <td>root</td>
+        <td><code>root</code></td>
         <td>MySQL username for root access.</td>
     </tr>
     <tr>
         <td><code>db_username_remote</code></td>
-        <td>developer</td>
+        <td><code>developer</code></td>
         <td>MySQL username for remote access.</td>
     </tr>
     <tr>
         <td><code>db_hostname</code></td>
-        <td>localhost</td>
+        <td><code>localhost</code></td>
         <td>MySQL address for the root connection.</td>
     </tr>
     <tr>
         <td><code>db_password</code></td>
-        <td>ansiblealexa</td>
+        <td><code>ansiblealexa</code></td>
         <td>MySQL password for both <code>root</code> and <code>developer</code> connections.</td>
     </tr>
     <tr>
         <td><code>db_name_magento</code></td>
-        <td>magento</td>
+        <td><code>magento</code></td>
         <td>Name for the Magento MySQL database.</td>
     </tr>
     <tr>
         <td><code>db_name_wordpress</code></td>
-        <td>wordpress</td>
+        <td><code>wordpress</code></td>
         <td>Name for the Wordpress MySQL database.</td>
     </tr>
     <tr>
         <td><code>ip_database</code></td>
-        <td>192.168.50.3</td>
+        <td><code>192.168.50.3</code></td>
         <td>IP address used to connect to the Vagrant database with <code>developer</code>.</td>
     </tr>
     <tr>
         <td><code>ip_magento</code></td>
-        <td>192.168.50.4</td>
+        <td><code>192.168.50.4</code></td>
         <td>IP address that <code>magento.dev.alexandalexa.com</code> should map to.</td>
     </tr>
     <tr>
         <td><code>ip_wordpress</code></td>
-        <td>192.168.50.5</td>
+        <td><code>192.168.50.5</code></td>
         <td>IP address that <code>wordpress.dev.alexandalexa.com</code> should map to.</td>
     </tr>
     <tr>
         <td><code>vagrant_port</code></td>
-        <td>3001</td>
+        <td><code>3001</code></td>
         <td>Port that the Vagrant instance accepts connections on.</td>
     </tr>
     <tr>
         <td><code>vagrant_cpus</code></td>
-        <td>3001</td>
+        <td><code>2</code></td>
         <td>Amount of CPUs that Vagrant will attempt to utilise.</td>
     </tr>
     <tr>
         <td><code>vagrant_memory</code></td>
-        <td>4096</td>
+        <td><code>4096</code></td>
         <td>Amount of memory in MB allocated to the Vagrant instance.</td>
     </tr>
     <tr>
         <td><code>host_magento</code></td>
-        <td>magento.dev.alexandalexa.com</td>
+        <td><code>magento.dev.alexandalexa.com</code></td>
         <td>Domain used for the Nginx configuration that maps to <code>192.168.50.4</code>.</td>
     </tr>
     <tr>
         <td><code>host_wordpress</code></td>
-        <td>wordpress.dev.alexandalexa.com</td>
+        <td><code>wordpress.dev.alexandalexa.com</code></td>
         <td>Domain used for the Nginx configuration that maps to <code>192.168.50.5</code>.</td>
     </tr>
     <tr>
         <td><code>repository_magento</code></td>
-        <td>git@github.com:alexandalexa/hephaestus.git</td>
+        <td><code>git@github.com:alexandalexa/hephaestus.git</code></td>
         <td>GitHub repository which contains the Magento codebase.</td>
     </tr>
     <tr>
         <td><code>repository_wordpress</code></td>
-        <td>git@github.com:alexandalexa/Wordpress.git</td>
+        <td><code>git@github.com:alexandalexa/Wordpress.git</code></td>
         <td>GitHub repository which contains the Wordpress codebase.</td>
     </tr>
     <tr>
