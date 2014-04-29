@@ -3,7 +3,7 @@ server {
     root /usr/share/nginx/www/magento/web-root;
     index index.php index.html index.htm;
 
-    server_name {{ host_magento }};
+    server_name ~^(?:([a-zA-Z0-9]+)\-)?{{ host_magento }}$;
     sendfile off;
 
     access_log /var/log/nginx/magento.log;
@@ -67,7 +67,7 @@ server {
 
     location / {
         root /usr/share/nginx/www/magento/web-root;
-        index index.html index.htm  index.php;
+        index index.html index.htm index.php;
         try_files try_files $uri $uri/ @handler;
     }
 
