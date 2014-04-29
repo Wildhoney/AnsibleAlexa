@@ -225,7 +225,7 @@
            <website_uk>
                <web>
                    <secure>
-                       <base_url>http://{{ host_magento }}/</base_url>
+                       <base_url>http://uk.{{ host_magento }}/</base_url>
                        <base_link_url>http://{{ host_magento }}/</base_link_url>
                        <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
                        <base_media_url>http://{{ host_magento }}/media/</base_media_url>

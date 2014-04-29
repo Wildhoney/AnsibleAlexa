@@ -21,7 +21,7 @@
       ignore_errors: yes
 
     - name: Remove Media Directory
-      command: rm -f {{ remote_media_directory }}
+      command: rmdir {{ remote_media_directory }}
       sudo: yes
       ignore_errors: yes
 

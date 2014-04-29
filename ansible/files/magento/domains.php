@@ -16,7 +16,7 @@ class aaSuperGlobals {
         'store.alexandalexa.com',
         'sa.alexandalexa.com',
         'admin.alexandalexa.com',
-        '{{ host_magento }}'
+        'uk.{{ host_magento }}'
     );
 
     // us domains
