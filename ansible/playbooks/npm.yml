@@ -38,6 +38,9 @@
       npm: path={{ magento_root_path }}
       sudo: yes
 
-    - name: Build Magento Dependencies
-      shell: node_modules/grunt-cli/bin/grunt build chdir={{ magento_root_path }}
+    - name: Install Bower
+      npm: name=bower global=yes
       sudo: yes
+
+    - name: Install Bower Dependencies
+      shell: bower install chdir={{ magento_root_path }}
