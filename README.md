@@ -27,8 +27,9 @@ Considering everything ran successfully, you should be presented with the detail
 From then on all you need to do is modify your hosts file to represent the IP addresses shown in the welcome screen above &ndash; yours may differ depending on your configuration.
 
 ```
-192.168.50.4 magento.dev.alexandalexa.com
-192.168.50.5 wordpress.dev.alexandalexa.com
+192.168.50.3 db.alexandalexa.com
+192.168.50.4 mg.alexandalexa.com
+192.168.50.5 wp.alexandalexa.com
 ```
 
 Known Issues
