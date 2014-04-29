@@ -34,6 +34,10 @@
       command: echo "" | sudo add-apt-repository ppa:chris-lea/node.js
       sudo: yes
 
+    - name: Apt Get Update
+      command: apt-get update
+      sudo: yes
+
     - name: Update Node.js
       apt: pkg=nodejs state=installed update_cache=true force=true
       sudo: yes
@@ -43,7 +47,7 @@
       sudo: yes
 
     - name: Install NPM Modules
-      command: npm install
+      command: "chdir={{ magento_root_path }} npm install"
 
     - name: Build Magento Dependencies
-      command: "{{ magento_root_path }}/node_modules/grunt-cli/bin/grunt build"
+      command: "chdir={{ magento_root_path }} node_modules/grunt-cli/bin/grunt build"
