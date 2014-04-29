@@ -17,13 +17,14 @@
 
     - name: Install PHP Modules
       apt: pkg={{ item }} state=installed update_cache=true install_recommends=no
+      sudo: yes
       with_items:
         - php5-mysql
         - php5-curl
         - php5-memcache
         - php5-mcrypt
         - php5-cli
-        - php5-apc
+        - php-apc
 
     # Finalise
 

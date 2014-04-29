@@ -10,32 +10,32 @@
     - name: Include Configuration
       include_vars: ../../ansiblealexa.yml
 
-    - name: Apt Get Update
-      command: apt-get update
+    - name: Install NPM Modules
+      apt: pkg={{ item }} state=installed update_cache=true install_recommends=no
+      sudo: yes
+      with_items:
+        - python-software-properties
+        - software-properties-common
+        - python
+        - g++
+        - make
+
+    - name: Add Node.js Repository
+      shell: echo "" | add-apt-repository ppa:chris-lea/node.js
       sudo: yes
 
-    - name: Install Python-Software-Properties
-      apt: pkg=python-software-properties state=installed update_cache=true force=true
-      sudo: yes
-
-    - name: Update NPM
-      command: echo "" | sudo add-apt-repository ppa:chris-lea/node.js
-      sudo: yes
-
-    - name: Apt Get Update
-      command: apt-get update
-      sudo: yes
-
-    - name: Update Node.js
-      apt: pkg=nodejs state=installed update_cache=true force=true
-      sudo: yes
-
-    - name: Install NPM
-      apt: pkg=npm state=installed update_cache=true force=true
+    - name: Apt-Get Update
+      shell: apt-get update
       sudo: yes
 
     - name: Install NPM Modules
-      shell: npm install chdir={{ magento_root_path }}
+      apt: pkg={{ item }} state=installed update_cache=true
+      sudo: yes
+      with_items:
+        - nodejs
+
+    - name: Install Dependencies
+      npm: path={{ magento_root_path }}
       sudo: yes
 
     - name: Build Magento Dependencies
