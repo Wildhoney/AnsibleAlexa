@@ -16,13 +16,13 @@ class aaSuperGlobals {
         'store.alexandalexa.com',
         'sa.alexandalexa.com',
         'admin.alexandalexa.com',
-        'uk.{{ host_magento }}'
+        '{{ host_magento }}'
     );
 
     // us domains
     public static $usDomains = array(
         'usa.alexandalexa.com', # Live site
-        'usa.{{ host_magento }}'
+        'us.{{ host_magento }}'
     );
 
     // eu domains
@@ -34,7 +34,7 @@ class aaSuperGlobals {
     // International domains
     public static $worldDomains = array(
         'store.alexandalexa.com', # Live site
-        'store.{{ host_magento }}'
+        'rw.{{ host_magento }}'
     );
     // Arabia domains
     public static $saDomains = array(
