@@ -15,29 +15,15 @@
 
     # PHP Dependencies
 
-    - name: Install PHP-MySQL Module
-      apt: pkg=php5-mysql state=installed update_cache=true
-      sudo: yes
-
-    - name: Install PHP-Curl Module
-      apt: pkg=php5-curl state=installed update_cache=true
-      sudo: yes
-
-    - name: Install PHP-Memcache Module
-      apt: pkg=php5-memcache state=installed update_cache=true
-      sudo: yes
-
-    - name: Install PHP-MCrypt Module
-      apt: pkg=php5-mcrypt state=installed update_cache=true
-      sudo: yes
-
-    - name: Install PHP-CLI Module
-      apt: pkg=php5-cli state=installed update_cache=true
-      sudo: yes
-
-    - name: Install PHP-APC Module
-      apt: pkg=php-apc state=installed update_cache=true
-      sudo: yes
+    - name: Install PHP Modules
+      apt: pkg={{ item }} state=installed update_cache=true install_recommends=no
+      with_items:
+        - php5-mysql
+        - php5-curl
+        - php5-memcache
+        - php5-mcrypt
+        - php5-cli
+        - php5-apc
 
     # Finalise
 

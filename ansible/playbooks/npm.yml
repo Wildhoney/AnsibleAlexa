@@ -30,8 +30,14 @@
       apt: pkg=nodejs state=installed update_cache=true force=true
       sudo: yes
 
+    - name: Install NPM
+      apt: pkg=npm state=installed update_cache=true force=true
+      sudo: yes
+
     - name: Install NPM Modules
-      command: "chdir={{ magento_root_path }} npm install"
+      shell: npm install chdir={{ magento_root_path }}
+      sudo: yes
 
     - name: Build Magento Dependencies
-      command: "chdir={{ magento_root_path }} node_modules/grunt-cli/bin/grunt build"
+      shell: node_modules/grunt-cli/bin/grunt build chdir={{ magento_root_path }}
+      sudo: yes
