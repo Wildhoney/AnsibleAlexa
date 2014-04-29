@@ -30,6 +30,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     virtualbox.cpus   = options['vagrant_cpus']
   end
 
+  exit
+
   # Run playbooks from the "pre_sync" object.
   options['playbooks']['pre_sync'].each do |playbook|
 

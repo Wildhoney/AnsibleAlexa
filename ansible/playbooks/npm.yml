@@ -14,20 +14,8 @@
       command: apt-get update
       sudo: yes
 
-    - name: Install Python
-      apt: pkg=python state=installed update_cache=true force=true
-      sudo: yes
-
     - name: Install Python-Software-Properties
       apt: pkg=python-software-properties state=installed update_cache=true force=true
-      sudo: yes
-
-    - name: Install G++
-      apt: pkg=g++ state=installed update_cache=true force=true
-      sudo: yes
-
-    - name: Install Make
-      apt: pkg=make state=installed update_cache=true force=true
       sudo: yes
 
     - name: Update NPM
@@ -40,10 +28,6 @@
 
     - name: Update Node.js
       apt: pkg=nodejs state=installed update_cache=true force=true
-      sudo: yes
-
-    - name: Install NPM
-      apt: pkg=npm state=installed update_cache=true force=true
       sudo: yes
 
     - name: Install NPM Modules
