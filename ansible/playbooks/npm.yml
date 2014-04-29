@@ -28,11 +28,12 @@
       shell: apt-get update
       sudo: yes
 
-    - name: Install NPM Modules
+    - name: Install Node.js/Git
       apt: pkg={{ item }} state=installed update_cache=true
       sudo: yes
       with_items:
         - nodejs
+        - git
 
     - name: Install Dependencies
       npm: path={{ magento_root_path }}
