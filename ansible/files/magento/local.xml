@@ -163,7 +163,7 @@
                        <base_url>http://{{ host_magento }}/</base_url>
                        <base_link_url>http://{{ host_magento }}/</base_link_url>
                        <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://test.alexandalexa.com/media/</base_media_url>
+                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
                        <base_js_url>http://{{ host_magento }}/js/</base_js_url>
                        <base_url>http://{{ host_magento }}/</base_url>
                        <use_in_frontend>0</use_in_frontend>
@@ -173,7 +173,7 @@
                        <base_url>http://{{ host_magento }}/</base_url>
                        <base_link_url>http://{{ host_magento }}/</base_link_url>
                        <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://test.alexandalexa.com/media/</base_media_url>
+                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
                        <base_js_url>http://{{ host_magento }}/js/</base_js_url>
                    </unsecure>
                </web>
@@ -184,7 +184,7 @@
                        <base_url>http://{{ host_magento }}/</base_url>
                        <base_link_url>http://{{ host_magento }}/</base_link_url>
                        <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://test.alexandalexa.com/media/</base_media_url>
+                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
                        <base_js_url>http://{{ host_magento }}/js/</base_js_url>
                        <base_url>http://{{ host_magento }}/</base_url>
                        <use_in_frontend>0</use_in_frontend>
@@ -194,7 +194,7 @@
                        <base_url>http://{{ host_magento }}/</base_url>
                        <base_link_url>http://{{ host_magento }}/</base_link_url>
                        <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://test.alexandalexa.com/media/</base_media_url>
+                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
                        <base_js_url>http://{{ host_magento }}/js/</base_js_url>
                    </unsecure>
                </web>
@@ -207,7 +207,7 @@
                        <base_url>http://{{ host_magento }}/</base_url>
                        <base_link_url>http://{{ host_magento }}/</base_link_url>
                        <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://test.alexandalexa.com/media/</base_media_url>
+                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
                        <base_js_url>http://{{ host_magento }}/js/</base_js_url>
                        <base_url>http://{{ host_magento }}/</base_url>
                        <use_in_frontend>0</use_in_frontend>
@@ -217,7 +217,7 @@
                        <base_url>http://{{ host_magento }}/</base_url>
                        <base_link_url>http://{{ host_magento }}/</base_link_url>
                        <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://test.alexandalexa.com/media/</base_media_url>
+                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
                        <base_js_url>http://{{ host_magento }}/js/</base_js_url>
                    </unsecure>
                </web>
@@ -228,7 +228,7 @@
                        <base_url>http://{{ host_magento }}/</base_url>
                        <base_link_url>http://{{ host_magento }}/</base_link_url>
                        <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://test.alexandalexa.com/media/</base_media_url>
+                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
                        <base_js_url>http://{{ host_magento }}/js/</base_js_url>
                        <base_url>http://{{ host_magento }}/</base_url>
                        <use_in_frontend>0</use_in_frontend>
@@ -238,7 +238,7 @@
                        <base_url>http://{{ host_magento }}/</base_url>
                        <base_link_url>http://{{ host_magento }}/</base_link_url>
                        <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://test.alexandalexa.com/media/</base_media_url>
+                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
                        <base_js_url>http://{{ host_magento }}/js/</base_js_url>
                    </unsecure>
                </web>
