@@ -15,6 +15,11 @@
       apt: pkg=sshfs state=installed update_cache=true
       sudo: yes
 
+    - name: Unmount Media Directory
+      command: fusermount -u {{ remote_media_directory }}
+      sudo: yes
+      ignore_errors: yes
+
     - name: Remove Media Directory
       command: rm -rf {{ remote_media_directory }}
       sudo: yes

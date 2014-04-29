@@ -96,22 +96,22 @@
                    <site> <!-- can define multiple sites -->
                        <run_code><![CDATA[website_usa]]></run_code> <!-- 'code' to run Mage as found in the Website or Shop View -->
                        <run_type><![CDATA[website]]></run_type> <!-- website|store -->
-                       <host_name>usa-{{ host_magento }}</host_name> <!-- comma separated list of host names, which will run Mage with the specified 'run_code' and 'run_type' -->
+                       <host_name>usa.{{ host_magento }}</host_name> <!-- comma separated list of host names, which will run Mage with the specified 'run_code' and 'run_type' -->
                    </site>
                    <site> <!-- can define multiple sites -->
                        <run_code><![CDATA[website_eu]]></run_code> <!-- 'code' to run Mage as found in the Website or Shop View -->
                        <run_type><![CDATA[website]]></run_type> <!-- website|store -->
-                       <host_name>eu-{{ host_magento }}</host_name> <!-- comma separated list of host names, which will run Mage with the specified 'run_code' and 'run_type' -->
+                       <host_name>eu.{{ host_magento }}</host_name> <!-- comma separated list of host names, which will run Mage with the specified 'run_code' and 'run_type' -->
                    </site>
                    <site> <!-- can define multiple sites -->
                        <run_code><![CDATA[website_int]]></run_code> <!-- 'code' to run Mage as found in the Website or Shop View -->
                        <run_type><![CDATA[website]]></run_type> <!-- website|store -->
-                       <host_name>store-{{ host_magento }}</host_name> <!-- comma separated list of host names, which will run Mage with the specified 'run_code' and 'run_type' -->
+                       <host_name>store.{{ host_magento }}</host_name> <!-- comma separated list of host names, which will run Mage with the specified 'run_code' and 'run_type' -->
                    </site>
                    <site> <!-- can define multiple sites -->
                        <run_code><![CDATA[website_sa]]></run_code> <!-- 'code' to run Mage as found in the Website or Shop View -->
                        <run_type><![CDATA[website]]></run_type> <!-- website|store -->
-                       <host_name>sa-{{ host_magento }}</host_name> <!-- comma separated list of host names, which will run Mage with the specified 'run_code' and 'run_type' -->
+                       <host_name>sa.{{ host_magento }}</host_name> <!-- comma separated list of host names, which will run Mage with the specified 'run_code' and 'run_type' -->
                    </site>
                </multi_hostname_config>
            </global>

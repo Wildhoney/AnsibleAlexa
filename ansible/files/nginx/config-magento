@@ -1,9 +1,9 @@
 server {
 
     root /usr/share/nginx/www/magento/web-root;
-    index index.php index.html index.htm;
+    index lightspeed.php index.php index.html index.htm;
 
-    server_name ~^(?:([a-zA-Z0-9]+)\-)?{{ host_magento }}$;
+    server_name ~^(?:([a-zA-Z0-9]+)\.)?{{ host_magento }}$;
     sendfile off;
 
     access_log /var/log/nginx/magento.log;
@@ -20,12 +20,12 @@ server {
 
     location ~ [^/]\.php(/|$) {
 
-        if (!-e $request_filename) { rewrite / /index.php last; } #;
+        if (!-e $request_filename) { rewrite / /lightspeed.php last; } #;
 
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param MAGE_ROOT_DIR /usr/share/nginx/www/magento;
         fastcgi_pass  127.0.0.1:9000;
-        fastcgi_index index.php;
+        fastcgi_index lightspeed.php;
         fastcgi_param HTTP_HOST {{ host_magento }};
         # fastcgi_param MAGE_IS_DEVELOPER_MODE 1;
         include fastcgi_params;
@@ -67,7 +67,7 @@ server {
 
     location / {
         root /usr/share/nginx/www/magento/web-root;
-        index index.html index.htm index.php;
+        index lightspeed.php index.html index.htm index.php;
         try_files try_files $uri $uri/ @handler;
     }
 
@@ -75,7 +75,7 @@ server {
         try_files $uri =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_pass 127.0.0.1:9000;
-        fastcgi_index index.php;
+        fastcgi_index lightspeed.php;
         include fastcgi_params;
     }
 
