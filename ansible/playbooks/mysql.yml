@@ -25,7 +25,7 @@
     # Installation
 
     - name: Install MySQL Server
-      apt: pkg=mysql-server state=installed update_cache=true
+      apt: pkg=mysql-server state=installed update_cache=true force=true
       sudo: yes
 
     - name: Install MySQL-Python
@@ -71,7 +71,7 @@
     # Magento
 
     - name: Template Magento DB
-      template: src={{ db_magento_local_path }} dest={{ db_magento_remote_path }} 
+      template: src={{ db_magento_local_path }} dest={{ db_magento_remote_path }} force=true
       notify: Import Magento
       sudo: yes
 
@@ -88,7 +88,7 @@
     # Wordpress
 
     - name: Template Wordpress DB
-      template: src={{ db_wordpress_local_path }} dest={{ db_wordpress_remote_path }} 
+      template: src={{ db_wordpress_local_path }} dest={{ db_wordpress_remote_path }} force=true
       notify: Import Wordpress
       sudo: yes
 

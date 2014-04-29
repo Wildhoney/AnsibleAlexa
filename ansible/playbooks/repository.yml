@@ -22,6 +22,10 @@
       git: repo={{ repository_magento }} dest={{ local_magento_repository_path }}
       when: check_magento_path.stat.exists == false
 
+    - name: Clear Magento Cache
+      command: rm -rf /usr/share/nginx/www/magento/web-root/var/cache/*
+      ignore_errors: yes
+
     # Wordpress
 
     - name: Check Wordpress

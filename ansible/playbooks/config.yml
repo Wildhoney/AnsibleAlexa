@@ -26,19 +26,19 @@
     # Wordpress
 
     - name: Copy Wordpress Configuration
-      template: src={{ local_wordpress_wpconfig_path }} dest={{ remote_wordpress_wpconfig_path }}
+      template: src={{ local_wordpress_wpconfig_path }} dest={{ remote_wordpress_wpconfig_path }} force=true
                 
       sudo: yes
 
     # Magento
 
     - name: Template Magento Local.xml
-      template: src={{ local_magento_local_xml_path }} dest={{ remote_magento_local_xml_path }}
+      template: src={{ local_magento_local_xml_path }} dest={{ remote_magento_local_xml_path }} force=true
                 
       sudo: yes
 
     - name: Template Magento Domains.php
-      template: src={{ local_magento_domains_path }} dest={{ remote_magento_domains_path }}
+      template: src={{ local_magento_domains_path }} dest={{ remote_magento_domains_path }} force=true
                 
       sudo: yes
 
