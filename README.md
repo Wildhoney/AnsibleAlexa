@@ -56,3 +56,12 @@ Known Issues
 ---
 
 When your computer loses connectivity, but Vagrant remains awake, SSHFS will unmount the `media` directory &ndash; this can be remedied by running `vagrant provision`.
+
+Common Tasks
+---
+
+All of the following tasks require the action, followed by `vagrant provision`.
+
+ * Re-import database &mdash; `drop database magento`/`drop database magento`;
+ * Change domains &mdash; `drop database magento`/`drop database magento`;
+ * Re-download repository &mdash; `rm -rf websites/magento`/`rm -rf websites/wordpress`;
