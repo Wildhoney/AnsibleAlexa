@@ -25,6 +25,7 @@ Quick Start
  * Install Vagrant: <a href="https://www.vagrantup.com/downloads" target="_blank">https://www.vagrantup.com/downloads</a>;
  * Install Ansible: `brew install ansible`;
  * Create **ansiblealexa.yml** file: `cp example.ansiblealexa.yml ansiblealexa.yml`;
+ * Update SSH details in **ansiblealexa.yml**;
  * Initialise Vagrant: `vagrant up`;
  * Update hosts file: `sudo vim /etc/private/hosts`;
  * Voila! Open <a href="http://localhost:3001/" target="_blank">http://localhost:3001/</a>;
