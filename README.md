@@ -8,7 +8,16 @@ AnsibleAlexa allows you to deploy the Magento and Wordpress instances. It uses <
 
 <img src="http://i.imgur.com/8JXQwdB.png" alt="Vagrant and Ansible" />
 
-It also mounts the `media` directory using <a href="http://fuse.sourceforge.net/sshfs.html" target="_blank">SSHFS</a>.
+It also:
+
+ - Mounts the `media` directory using <a href="http://fuse.sourceforge.net/sshfs.html" target="_blank">SSHFS</a>;
+ - Invokes `bower install` to install all front-end dependencies;
+ - Configures a MySQL remote user to connect via SequelPro/SQLYog;
+ - Reindexes all necessary Magento indexes;
+ - Clears Magento cache &ndash; and Lightspeed;
+ - Configures APC cache on the PHP instance;
+ - Sets up a self-signed SSL certificate for HTTPS;
+ - ...And much, much more!
 
 Getting Started
 ---
