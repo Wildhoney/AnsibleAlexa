@@ -5,3 +5,4 @@
 !/websites/.gitkeep
 /ansible/files/database/*.sql
 /ansible/files/database/*.gz
+/vagrant_ansible_inventory_default
