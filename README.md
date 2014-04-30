@@ -62,6 +62,6 @@ Common Tasks
 
 All of the following tasks require the action, followed by `vagrant provision`.
 
- * Re-import database &mdash; `drop database magento`/`drop database magento`;
- * Change domains &mdash; `drop database magento`/`drop database magento`;
- * Re-download repository &mdash; `rm -rf websites/magento`/`rm -rf websites/wordpress`;
+ * Re-import database &mdash; `drop database magento` and/or `drop database magento`;
+ * Change domains &mdash; `drop database magento` and/or `drop database magento`;
+ * Re-download repository &mdash; `rm -rf websites/magento` and/or `rm -rf websites/wordpress`;
