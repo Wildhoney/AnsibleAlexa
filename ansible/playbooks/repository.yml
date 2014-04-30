@@ -6,21 +6,40 @@
 
     local_magento_repository_path: ../../websites/magento
     local_wordpress_repository_path: ../../websites/wordpress
+    local_database_path: ../files/database
 
   tasks:
 
     - name: Include Configuration
       include_vars: ../../ansiblealexa.yml
 
-    # Databases
+      # Databases
+
+    - name: Remove Existing SQL GZ
+      command: rm -f {{ local_database_path }}/{{ item }}.sql.gz
+      with_items:
+        - magento
+        - wordpress
+
+    - name: Fetch Magento Database
+      command: curl {{ database_path }}/{{ item }}.sql.gz -o {{ local_database_path }}/{{ item }}.sql.gz
+      with_items:
+        - magento
+        - wordpress
+
+    - name: Remove Existing SQL
+      command: rm -f {{ local_database_path }}/{{ item }}.sql
+      with_items:
+        - magento
+        - wordpress
 
     - name: Decompress Magento
-      command: gzip -d ../files/database/magento.sql.gz
+      command: gzip -d {{ local_database_path }}/{{ item }}.sql.gz
+      with_items:
+        - magento
+        - wordpress
 
-    - name: Decompress Wordpress
-      command: gzip -d ../files/database/wordpress.sql.gz
-
-    # Magento
+    # Magento Repository
 
     - name: Check Magento
       stat: path=../../websites/magento/.git
@@ -38,7 +57,7 @@
       command: rm -rf /usr/share/nginx/www/magento/web-root/var/cache/*
       ignore_errors: yes
 
-    # Wordpress
+    # Wordpress Repository
 
     - name: Check Wordpress
       stat: path=../../websites/wordpress/.git

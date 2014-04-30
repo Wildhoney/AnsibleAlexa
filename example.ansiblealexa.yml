@@ -47,6 +47,10 @@ host_wordpress: wp.alexandalexa.com
 repository_magento: git@github.com:alexandalexa/hephaestus.git
 repository_wordpress: git@github.com:alexandalexa/Wordpress.git
 
+# Databases
+# Usage: Remote location of where "wordpress.sql.gz" and "magento.sql.gz" are.
+database_path: http://test.alexandalexa.com/databases
+
 # Playbooks
 # Usage: Complete list of playbooks that will be played during a `vagrant provision`.
 playbooks:
