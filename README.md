@@ -19,6 +19,15 @@ It also:
  - Sets up a self-signed SSL certificate for HTTPS;
  - ...And much, much more!
 
+Quick Start
+---
+
+ * Install Vagrant: <a href="https://www.vagrantup.com/downloads" target="_blank">https://www.vagrantup.com/downloads</a>;
+ * Install Ansible: `brew install ansible`;
+ * Initialise Vagrant: `vagrant up`;
+ * Update hosts file: `sudo vim /etc/private/hosts`;
+ * Voila! Open <a href="http://localhost:3001/" target="_blank">http://localhost:3001/</a>;
+
 Getting Started
 ---
 
