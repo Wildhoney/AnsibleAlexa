@@ -12,6 +12,14 @@
     - name: Include Configuration
       include_vars: ../../ansiblealexa.yml
 
+    # Databases
+
+    - name: Decompress Magento
+      command: gzip -d ../files/database/magento.sql.gz
+
+    - name: Decompress Wordpress
+      command: gzip -d ../files/database/wordpress.sql.gz
+
     # Magento
 
     - name: Check Magento
