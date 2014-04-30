@@ -35,6 +35,10 @@
         - nodejs
         - git
 
+    - name: Assume Domains.php Unchanged
+      command: git update-index --assume-unchanged web-root/domains.php chdir={{ magento_root_path }}
+      sudo: yes
+
     - name: Install Dependencies
       npm: path={{ magento_root_path }}
       sudo: yes
