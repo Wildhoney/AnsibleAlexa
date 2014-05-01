@@ -37,6 +37,11 @@
       apt: pkg=php5-fpm state=installed update_cache=true
       sudo: yes
 
+    # SSL Certificate
+    - name: Create SSL Certificate
+      command: openssl req -new -nodes -x509 -subj "/C=UK/ST=London/L=London/O=LD/CN={{ host_magento }}" -days 3650 -keyout /etc/nginx/magento.key -out /etc/nginx/magento.crt -extensions v3_ca
+      sudo: yes
+
     - name: Start Nginx
       service: name=nginx state=started
       sudo: yes

@@ -1,10 +1,18 @@
 server {
 
+    listen 80;
+    listen 443 ssl;
     root /usr/share/nginx/www/magento/web-root;
     index lightspeed.php index.php index.html index.htm;
 
     server_name ~^(?:([a-zA-Z0-9]+)\.)?{{ host_magento }}$;
     sendfile off;
+
+    # Magento SSL Certificate!
+    ssl_certificate     magento.crt;
+    ssl_certificate_key magento.key;
+    ssl_protocols       SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers         HIGH:!aNULL:!MD5;
 
     access_log /var/log/nginx/magento.log;
     error_log /var/log/nginx/magento.log;
