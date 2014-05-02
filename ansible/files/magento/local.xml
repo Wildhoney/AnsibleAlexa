@@ -28,37 +28,37 @@
 <config>
     <global>
         <install>
-            <date><![CDATA[Fri, 18 May 2012 23:01:11 +0000]]></date>
+            <date>Fri, 18 May 2012 23:01:11 +0000</date>
         </install>
         <crypt>
-            <key><![CDATA[TSZii987AwUNzsZSKuPiAc89AZlfTAK7]]></key>
+            <key>TSZii987AwUNzsZSKuPiAc89AZlfTAK7</key>
         </crypt>
         <disable_local_modules>false</disable_local_modules>
         <resources>
             <db>
-                <table_prefix><![CDATA[]]></table_prefix>
+                <table_prefix></table_prefix>
             </db>
             <default_setup>
                 <connection>
-                    <host><![CDATA[{{ db_hostname }}]]></host>
-                    <username><![CDATA[{{ db_username_root }}]]></username>
-                    <password><![CDATA[{{ db_password }}]]></password>
-                    <dbname><![CDATA[{{ db_name_magento }}]]></dbname>
-                    <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
-                    <model><![CDATA[mysql4]]></model>
-                    <type><![CDATA[pdo_mysql]]></type>
-                    <pdoType><![CDATA[]]></pdoType>
+                    <host>{{ db_hostname }}</host>
+                    <username>{{ db_username_root }}</username>
+                    <password>{{ db_password }}</password>
+                    <dbname>{{ db_name_magento }}</dbname>
+                    <initStatements>SET NAMES utf8</initStatements>
+                    <model>mysql4</model>
+                    <type>pdo_mysql</type>
+                    <pdoType></pdoType>
                     <active>1</active>
                 </connection>
             </default_setup>
         </resources>
-        <session_save><![CDATA[files]]></session_save>
+        <session_save>files</session_save>
     </global>
     <admin>
         <routers>
             <adminhtml>
                 <args>
-                    <frontName><![CDATA[alexpie]]></frontName>
+                    <frontName>alexpie</frontName>
                 </args>
             </adminhtml>
         </routers>
@@ -68,13 +68,13 @@
     <lightspeed>
         <global>
             <connection>
-                <host><![CDATA[{{ db_hostname }}]]></host>
-                <username><![CDATA[{{ db_username_root }}]]></username>
-                <password><![CDATA[{{ db_password }}]]></password>
-                <dbname><![CDATA[localhost]]></dbname>
+                <host>{{ db_hostname }}</host>
+                <username>{{ db_username_root }}</username>
+                <password>{{ db_password }}</password>
+                <dbname>localhost</dbname>
             </connection>
             <multi_currency>1</multi_currency>
-            <request_path><![CDATA[]]></request_path> <!-- this will almost always be blank -->
+            <request_path></request_path> <!-- this will almost always be blank -->
             <!--
                 Examples - If your base_url looks like:
                     http://www.tinybrick.com                then    ''
@@ -82,42 +82,42 @@
             -->
            <params>gclid,pcrid,mkwid,plid,kword,match,utm_medium,utm_source,utm_campaign,utm_term,utm_content,aa_set_site</params> <!-- comma separated list of url params to ignore such as get parameters for ads -->
            <params_nocache>SID,gclid,pcrid,mkwid,plid,kword,match,utm_medium,utm_source,utm_campaign,utm_term,utm_content</params_nocache> <!-- comma separated list of url params that won't be able to create a cached page (e.g. to avoid  -->
-           <admin_uri><![CDATA[alexpie]]></admin_uri> <!-- the URI used to access the admin; empty defaults to 'admin' -->
+           <admin_uri>alexpie</admin_uri> <!-- the URI used to access the admin; empty defaults to 'admin' -->
            <exclude_uri>store,from_store,SID,sgps,sgpsSecure,paypal,aa_currency</exclude_uri> <!-- comma separated list of URI keywords which redirect immediately to index.php -->
 
            <multi_storeview>1</multi_storeview> <!-- Set to 1 if you have multiple views for a website under the same hostname, defaults to false "0" -->
            <multi_hostname>1</multi_hostname> <!-- empty defaults to single site -->
            <multi_hostname_config> <!-- Specify how to call Mage for each site. Use only if '<multi_hostname>' is set to 1' -->
                    <site> <!-- define multiple sites if you are using different codes -->
-                       <run_code><![CDATA[website_uk]]></run_code> <!-- 'code' to run Mage as found in the Website or Shop View -->
-                       <run_type><![CDATA[website]]></run_type> <!-- website|store -->
+                       <run_code>website_uk</run_code> <!-- 'code' to run Mage as found in the Website or Shop View -->
+                       <run_type>website</run_type> <!-- website|store -->
                        <host_name>{{ host_magento }}</host_name> <!-- comma separated list of host names, which will run Mage with the specified 'run_code' and 'run_type' -->
                    </site>
                    <site> <!-- can define multiple sites -->
-                       <run_code><![CDATA[website_usa]]></run_code> <!-- 'code' to run Mage as found in the Website or Shop View -->
-                       <run_type><![CDATA[website]]></run_type> <!-- website|store -->
+                       <run_code>website_usa</run_code> <!-- 'code' to run Mage as found in the Website or Shop View -->
+                       <run_type>website</run_type> <!-- website|store -->
                        <host_name>usa.{{ host_magento }}</host_name> <!-- comma separated list of host names, which will run Mage with the specified 'run_code' and 'run_type' -->
                    </site>
                    <site> <!-- can define multiple sites -->
-                       <run_code><![CDATA[website_eu]]></run_code> <!-- 'code' to run Mage as found in the Website or Shop View -->
-                       <run_type><![CDATA[website]]></run_type> <!-- website|store -->
+                       <run_code>website_eu</run_code> <!-- 'code' to run Mage as found in the Website or Shop View -->
+                       <run_type>website</run_type> <!-- website|store -->
                        <host_name>eu.{{ host_magento }}</host_name> <!-- comma separated list of host names, which will run Mage with the specified 'run_code' and 'run_type' -->
                    </site>
                    <site> <!-- can define multiple sites -->
-                       <run_code><![CDATA[website_int]]></run_code> <!-- 'code' to run Mage as found in the Website or Shop View -->
-                       <run_type><![CDATA[website]]></run_type> <!-- website|store -->
+                       <run_code>website_int</run_code> <!-- 'code' to run Mage as found in the Website or Shop View -->
+                       <run_type>website</run_type> <!-- website|store -->
                        <host_name>store.{{ host_magento }}</host_name> <!-- comma separated list of host names, which will run Mage with the specified 'run_code' and 'run_type' -->
                    </site>
                    <site> <!-- can define multiple sites -->
-                       <run_code><![CDATA[website_sa]]></run_code> <!-- 'code' to run Mage as found in the Website or Shop View -->
-                       <run_type><![CDATA[website]]></run_type> <!-- website|store -->
+                       <run_code>website_sa</run_code> <!-- 'code' to run Mage as found in the Website or Shop View -->
+                       <run_type>website</run_type> <!-- website|store -->
                        <host_name>sa.{{ host_magento }}</host_name> <!-- comma separated list of host names, which will run Mage with the specified 'run_code' and 'run_type' -->
                    </site>
                </multi_hostname_config>
            </global>
 
            <session>
-               <type></type> <!-- files|memcached|db; empty defaults to files -->
+               <type>db</type> <!-- files|memcached|db; empty defaults to files -->
 
                <!-- file -->
                <path></path> <!-- empty defaults to var/session -->
@@ -125,23 +125,23 @@
                <!-- memcached -->
                <servers> <!-- can use multiple servers in a federated, distributed cluster -->
                    <localhost><!-- name is arbitrary -->
-                       <host><![CDATA[127.0.0.1]]></host>
-                       <port><![CDATA[11211]]></port>
-                       <persistent><![CDATA[1]]></persistent>
+                       <host>127.0.0.1</host>
+                       <port>11211</port>
+                       <persistent>1</persistent>
                    </localhost>
                </servers>
 
                <!-- db -->
                <connection>
-                   <host><![CDATA[localhost]]></host>
-                   <username><![CDATA[root]]></username>
-                   <password><![CDATA[root]]></password>
-                   <dbname><![CDATA[dev_db]]></dbname>
+                   <host>127.0.0.1</host>
+                   <username>{{ db_username_root }}</username>
+                   <password>{{ db_password }}</password>
+                   <dbname>{{ db_name_magento }}</dbname>
                </connection>
            </session>
 
            <cache>
-               <type></type> <!-- files|memcached; empty default to files, memcached is STRONGLY encouraged in environments where possible -->
+               <type>memcached</type> <!-- files|memcached; empty default to files, memcached is STRONGLY encouraged in environments where possible -->
 
                <!-- file -->
                <path></path> <!-- empty defaults to var/lightspeed -->
@@ -149,99 +149,99 @@
                <!-- memcached -->
                <servers> <!-- can use multiple servers in a federated, distributed cluster -->
                    <localhost><!-- name is arbitrary -->
-                       <host><![CDATA[127.0.0.1]]></host>
-                       <port><![CDATA[11211]]></port>
-                       <persistent><![CDATA[1]]></persistent>
+                       <host>127.0.0.1</host>
+                       <port>11211</port>
+                       <persistent>1</persistent>
                    </localhost>
                </servers>
            </cache>
        </lightspeed>
-       <stores>
-           <admin>
-               <web>
-                   <secure>
-                       <base_url>http://{{ host_magento }}/</base_url>
-                       <base_link_url>http://{{ host_magento }}/</base_link_url>
-                       <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
-                       <base_js_url>http://{{ host_magento }}/js/</base_js_url>
-                       <base_url>http://{{ host_magento }}/</base_url>
-                       <use_in_frontend>0</use_in_frontend>
-                       <use_in_adminhtml>0</use_in_adminhtml>
-                   </secure>
-                   <unsecure>
-                       <base_url>http://{{ host_magento }}/</base_url>
-                       <base_link_url>http://{{ host_magento }}/</base_link_url>
-                       <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
-                       <base_js_url>http://{{ host_magento }}/js/</base_js_url>
-                   </unsecure>
-               </web>
-           </admin>
-           <uk_en>
-               <web>
-                   <secure>
-                       <base_url>http://{{ host_magento }}/</base_url>
-                       <base_link_url>http://{{ host_magento }}/</base_link_url>
-                       <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
-                       <base_js_url>http://{{ host_magento }}/js/</base_js_url>
-                       <base_url>http://{{ host_magento }}/</base_url>
-                       <use_in_frontend>0</use_in_frontend>
-                       <use_in_adminhtml>0</use_in_adminhtml>
-                   </secure>
-                   <unsecure>
-                       <base_url>http://{{ host_magento }}/</base_url>
-                       <base_link_url>http://{{ host_magento }}/</base_link_url>
-                       <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
-                       <base_js_url>http://{{ host_magento }}/js/</base_js_url>
-                   </unsecure>
-               </web>
-           </uk_en>
-       </stores>
-       <websites>
-           <admin>
-               <web>
-                   <secure>
-                       <base_url>http://{{ host_magento }}/</base_url>
-                       <base_link_url>http://{{ host_magento }}/</base_link_url>
-                       <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
-                       <base_js_url>http://{{ host_magento }}/js/</base_js_url>
-                       <base_url>http://{{ host_magento }}/</base_url>
-                       <use_in_frontend>0</use_in_frontend>
-                       <use_in_adminhtml>0</use_in_adminhtml>
-                   </secure>
-                   <unsecure>
-                       <base_url>http://{{ host_magento }}/</base_url>
-                       <base_link_url>http://{{ host_magento }}/</base_link_url>
-                       <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
-                       <base_js_url>http://{{ host_magento }}/js/</base_js_url>
-                   </unsecure>
-               </web>
-           </admin>
-           <website_uk>
-               <web>
-                   <secure>
-                       <base_url>http://{{ host_magento }}/</base_url>
-                       <base_link_url>http://{{ host_magento }}/</base_link_url>
-                       <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
-                       <base_js_url>http://{{ host_magento }}/js/</base_js_url>
-                       <base_url>http://{{ host_magento }}/</base_url>
-                       <use_in_frontend>0</use_in_frontend>
-                       <use_in_adminhtml>0</use_in_adminhtml>
-                   </secure>
-                   <unsecure>
-                       <base_url>http://{{ host_magento }}/</base_url>
-                       <base_link_url>http://{{ host_magento }}/</base_link_url>
-                       <base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>
-                       <base_media_url>http://{{ host_magento }}/media/</base_media_url>
-                       <base_js_url>http://{{ host_magento }}/js/</base_js_url>
-                   </unsecure>
-               </web>
-           </website_uk>
-       </websites>
+       <!--<stores>-->
+           <!--<admin>-->
+               <!--<web>-->
+                   <!--<secure>-->
+                       <!--<base_url>http://{{ host_magento }}/</base_url>-->
+                       <!--<base_link_url>http://{{ host_magento }}/</base_link_url>-->
+                       <!--<base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>-->
+                       <!--<base_media_url>http://{{ host_magento }}/media/</base_media_url>-->
+                       <!--<base_js_url>http://{{ host_magento }}/js/</base_js_url>-->
+                       <!--<base_url>http://{{ host_magento }}/</base_url>-->
+                       <!--<use_in_frontend>0</use_in_frontend>-->
+                       <!--<use_in_adminhtml>0</use_in_adminhtml>-->
+                   <!--</secure>-->
+                   <!--<unsecure>-->
+                       <!--<base_url>http://{{ host_magento }}/</base_url>-->
+                       <!--<base_link_url>http://{{ host_magento }}/</base_link_url>-->
+                       <!--<base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>-->
+                       <!--<base_media_url>http://{{ host_magento }}/media/</base_media_url>-->
+                       <!--<base_js_url>http://{{ host_magento }}/js/</base_js_url>-->
+                   <!--</unsecure>-->
+               <!--</web>-->
+           <!--</admin>-->
+           <!--<uk_en>-->
+               <!--<web>-->
+                   <!--<secure>-->
+                       <!--<base_url>http://{{ host_magento }}/</base_url>-->
+                       <!--<base_link_url>http://{{ host_magento }}/</base_link_url>-->
+                       <!--<base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>-->
+                       <!--<base_media_url>http://{{ host_magento }}/media/</base_media_url>-->
+                       <!--<base_js_url>http://{{ host_magento }}/js/</base_js_url>-->
+                       <!--<base_url>http://{{ host_magento }}/</base_url>-->
+                       <!--<use_in_frontend>0</use_in_frontend>-->
+                       <!--<use_in_adminhtml>0</use_in_adminhtml>-->
+                   <!--</secure>-->
+                   <!--<unsecure>-->
+                       <!--<base_url>http://{{ host_magento }}/</base_url>-->
+                       <!--<base_link_url>http://{{ host_magento }}/</base_link_url>-->
+                       <!--<base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>-->
+                       <!--<base_media_url>http://{{ host_magento }}/media/</base_media_url>-->
+                       <!--<base_js_url>http://{{ host_magento }}/js/</base_js_url>-->
+                   <!--</unsecure>-->
+               <!--</web>-->
+           <!--</uk_en>-->
+       <!--</stores>-->
+       <!--<websites>-->
+           <!--<admin>-->
+               <!--<web>-->
+                   <!--<secure>-->
+                       <!--<base_url>http://{{ host_magento }}/</base_url>-->
+                       <!--<base_link_url>http://{{ host_magento }}/</base_link_url>-->
+                       <!--<base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>-->
+                       <!--<base_media_url>http://{{ host_magento }}/media/</base_media_url>-->
+                       <!--<base_js_url>http://{{ host_magento }}/js/</base_js_url>-->
+                       <!--<base_url>http://{{ host_magento }}/</base_url>-->
+                       <!--<use_in_frontend>0</use_in_frontend>-->
+                       <!--<use_in_adminhtml>0</use_in_adminhtml>-->
+                   <!--</secure>-->
+                   <!--<unsecure>-->
+                       <!--<base_url>http://{{ host_magento }}/</base_url>-->
+                       <!--<base_link_url>http://{{ host_magento }}/</base_link_url>-->
+                       <!--<base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>-->
+                       <!--<base_media_url>http://{{ host_magento }}/media/</base_media_url>-->
+                       <!--<base_js_url>http://{{ host_magento }}/js/</base_js_url>-->
+                   <!--</unsecure>-->
+               <!--</web>-->
+           <!--</admin>-->
+           <!--<website_uk>-->
+               <!--<web>-->
+                   <!--<secure>-->
+                       <!--<base_url>http://{{ host_magento }}/</base_url>-->
+                       <!--<base_link_url>http://{{ host_magento }}/</base_link_url>-->
+                       <!--<base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>-->
+                       <!--<base_media_url>http://{{ host_magento }}/media/</base_media_url>-->
+                       <!--<base_js_url>http://{{ host_magento }}/js/</base_js_url>-->
+                       <!--<base_url>http://{{ host_magento }}/</base_url>-->
+                       <!--<use_in_frontend>0</use_in_frontend>-->
+                       <!--<use_in_adminhtml>0</use_in_adminhtml>-->
+                   <!--</secure>-->
+                   <!--<unsecure>-->
+                       <!--<base_url>http://{{ host_magento }}/</base_url>-->
+                       <!--<base_link_url>http://{{ host_magento }}/</base_link_url>-->
+                       <!--<base_skin_url>http://{{ host_magento }}/skin/</base_skin_url>-->
+                       <!--<base_media_url>http://{{ host_magento }}/media/</base_media_url>-->
+                       <!--<base_js_url>http://{{ host_magento }}/js/</base_js_url>-->
+                   <!--</unsecure>-->
+               <!--</web>-->
+           <!--</website_uk>-->
+       <!--</websites>-->
 </config>

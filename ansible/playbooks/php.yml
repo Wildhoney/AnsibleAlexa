@@ -13,6 +13,11 @@
 
   tasks:
 
+    # Memcache
+    - name: Install Memcache
+      apt: pkg=memcached state=installed update_cache=true
+      sudo: yes
+
     # PHP Dependencies
 
     - name: Install PHP Modules
