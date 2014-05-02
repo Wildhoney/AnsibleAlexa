@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    padding-top: 25px;
+    text-align: center;
+}
+
+iframe {
+    width: 630px;
+    height: 800px;
+    margin: 25px 0;
+    border: 1px solid rgba(0, 0, 0, .15);
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, .25);
+    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, .25);
+    box-shadow: 0 0 20px rgba(0, 0, 0, .25);
+}
+
+section.container {
+    width: 630px;
+    margin: auto;
+}
+
+h1 {
+    background-image: url('http://skin.alexandalexa.com/skin/frontend/default/public/images/sv2.png');
+    height: 45px;
+    width: 214px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+section.item:first-of-type {
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 1px solid rgba(0, 0, 0, .15);
+}
+
+section.item {
+    border-bottom: 1px solid rgba(0, 0, 0, .15);
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+}
+
+section.item h2 {
+    font-family: Arial, Tahoma, Helvetica, sans-serif;
+    font-size: 18px;
+    padding-top: 15px;
+}
+
+section.item h2:after {
+    content: ".";
+}
+
+section.item ul {
+    margin: 10px 0 5px 0;
+    font-size: 13px;
+    list-style-type: none;
+}
+
+section.item ul li {
+    padding: 2px 0;
+}
+
+section.item ul li label {
+    color: rgba(0, 0, 0, .5);
+    padding-right: 5px;
+}
+
+section.item ul li var {
+    font-style: normal;
+}
+
+section.item ul li a, section.item ul li a:visited {
+    font-style: normal;
+    color: black;
+}

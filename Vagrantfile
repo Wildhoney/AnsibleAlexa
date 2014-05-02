@@ -5,7 +5,7 @@
 require 'yaml'
 
 # Parse the configuration file.
-options = YAML.load_file('ansiblealexa.yml')
+options = YAML.load_file("ansiblealexa.yml")
 
 VAGRANTFILE_API_VERSION = "2"
 
