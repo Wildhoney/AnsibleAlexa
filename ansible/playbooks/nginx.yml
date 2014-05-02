@@ -5,11 +5,13 @@
 
     # Local
 
-    local_default_path: ../files/nginx/default
-    local_info_php_path: ../files/nginx/info.php
+    document_path: ../files/nginx/
 
-    local_magento_config: ../files/nginx/config-magento
-    local_wordpress_config: ../files/nginx/config-wordpress
+    local_default_path: {{ document_path }}default
+    local_info_php_path: {{ document_path }}info.php
+
+    local_magento_config: {{ document_path }}config-magento
+    local_wordpress_config: {{ document_path }}config-wordpress
 
     # Remote
 
@@ -48,7 +50,7 @@
     # Configuration
 
     - name: Create Welcome Document
-      template: src=../files/nginx/{{ item }} dest={{ remote_www_root_path }} force=yes mode=0644
+      template: src={{ document_path }}{{ item }} dest={{ remote_www_root_path }} force=yes mode=0644
       sudo: yes
       with_items:
         - index.html
