@@ -7,11 +7,11 @@
 
     document_path: ../files/nginx/
 
-    local_default_path: {{ document_path }}default
-    local_info_php_path: {{ document_path }}info.php
+    local_default_path: "{{ document_path }}default"
+    local_info_php_path: "{{ document_path }}info.php"
 
-    local_magento_config: {{ document_path }}config-magento
-    local_wordpress_config: {{ document_path }}config-wordpress
+    local_magento_config: "{{ document_path }}config-magento"
+    local_wordpress_config: "{{ document_path }}config-wordpress"
 
     # Remote
 
