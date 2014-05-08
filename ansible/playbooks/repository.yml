@@ -13,31 +13,27 @@
     - name: Include Configuration
       include_vars: ../../ansiblealexa.yml
 
-      # Databases
+    # Databases
 
-    - name: Remove Existing SQL GZ
-      command: rm -f {{ local_database_path }}/{{ item }}.sql.gz
+    - name: Remove Existing Databases
+      command: rm -f {{ local_database_path }}/{{ item }}
       with_items:
-        - magento
-        - wordpress
+        - magento-template.sql
+        - magento-template.sql.gz
+        - wordpress-template.sql
+        - wordpress-template.sql.gz
 
-    - name: Fetch Magento Database
+    - name: Fetch Databases
       command: curl {{ database_path }}/{{ item }}.sql.gz -o {{ local_database_path }}/{{ item }}.sql.gz
       with_items:
-        - magento
-        - wordpress
+        - magento-template
+        - wordpress-template
 
-    - name: Remove Existing SQL
-      command: rm -f {{ local_database_path }}/{{ item }}.sql
-      with_items:
-        - magento
-        - wordpress
-
-    - name: Decompress Magento
+    - name: Decompress Databases
       command: gzip -d {{ local_database_path }}/{{ item }}.sql.gz
       with_items:
-        - magento
-        - wordpress
+        - magento-template
+        - wordpress-template
 
     # Magento Repository
 
