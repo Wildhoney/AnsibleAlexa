@@ -3,8 +3,7 @@
   name: MySQL
   vars:
 
-    db_magento_remote_path: /var/magento-core.sql
-    db_wordpress_remote_path: /var/{{ item }}.sql
+    db_remote_path: /var
 
     db_magento_local_path: ../files/database/magento-core.sql
     db_wordpress_local_path: ../files/database/{{ item }}.sql
@@ -71,7 +70,7 @@
     # Magento
 
     - name: Remove Magento Database
-      command: rm -rf {{ item }}
+      command: rm -rf {{ database_path }}/{{ item }}
       sudo: yes
       notify: Retrieve Magento Database
       with_items:
@@ -79,22 +78,22 @@
         - magento-core.sql.gz
 
     - name: Retrieve Magento Database
-      command: wget {{ database_path }}/magento-core.sql.gz
+      command: wget -O {{ db_remote_path }}/magento-core.sql.gz {{ database_path }}/magento-core.sql.gz
       sudo: yes
       notify: Decompress Magento Database
 
     - name: Decompress Magento Database
-      command: gzip -d magento-core.sql.gz
+      command: gzip -d {{ db_remote_path }}/magento-core.sql.gz
       sudo: yes
       notify: Template Magento Database
 
     - name: Template Magento Database
-      template: src=../files/database/magento-template.sql dest=magento-template.sql force=true
+      template: src=../files/database/magento-template.sql dest={{ db_remote_path }}/magento-template.sql force=true
       sudo: yes
       notify: Import Magento
 
     - name: Import Magento
-      mysql_db: name={{ db_name_magento }} state=import target={{ item }}.sql
+      mysql_db: name={{ db_name_magento }} state=import target={{ db_remote_path }}/{{ item }}.sql
                 login_password={{ db_password }} login_user={{ db_username_root }}
       sudo: yes
       with_items:
@@ -104,7 +103,7 @@
     # Wordpress
 
     - name: Remove Wordpress Database
-      command: rm -rf {{ item }}
+      command: rm -rf {{ database_path }}/{{ item }}
       sudo: yes
       notify: Retrieve Wordpress Database
       with_items:
@@ -112,22 +111,22 @@
         - wordpress-core.sql.gz
 
     - name: Retrieve Wordpress Database
-      command: wget {{ database_path }}/wordpress-core.sql.gz
+      command: wget -O {{ db_remote_path }}/wordpress-core.sql.gz {{ database_path }}/wordpress-core.sql.gz
       sudo: yes
       notify: Decompress Wordpress Database
 
     - name: Decompress Wordpress Database
-      command: gzip -d wordpress-core.sql.gz
+      command: gzip -d {{ db_remote_path }}/wordpress-core.sql.gz
       sudo: yes
       notify: Template Wordpress Database
 
     - name: Template Wordpress Database
-      template: src=../files/database/wordpress-template.sql dest=wordpress-template.sql force=true
+      template: src=../files/database/wordpress-template.sql dest={{ db_remote_path }}/wordpress-template.sql force=true
       sudo: yes
       notify: Import Wordpress
 
     - name: Import Wordpress
-      mysql_db: name={{ db_name_wordpress }} state=import target={{ item }}.sql
+      mysql_db: name={{ db_name_wordpress }} state=import target={{ db_remote_path }}/{{ item }}.sql
                 login_password={{ db_password }} login_user={{ db_username_root }}
       sudo: yes
       with_items:
