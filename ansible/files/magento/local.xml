@@ -4,7 +4,7 @@
 
     <global>
         <install>
-            <date>{{ ansible_date_time.date }} @ {{ ansible_date_time.time }}</date>
+            <date>{{ ansible_date_time.date }} {{ ansible_date_time.time }}</date>
         </install>
         <crypt>
             <key>TSZii987AwUNzsZSKuPiAc89AZlfTAK7</key>
