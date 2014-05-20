@@ -34,7 +34,7 @@ server {
         fastcgi_param MAGE_ROOT_DIR /usr/share/nginx/www/magento;
         fastcgi_pass  127.0.0.1:9000;
         fastcgi_index lightspeed.php;
-        fastcgi_param HTTP_HOST {{ host_magento }};
+        # fastcgi_param HTTP_HOST {{ host_magento }};
         # fastcgi_param MAGE_IS_DEVELOPER_MODE 1;
         include fastcgi_params;
         fastcgi_read_timeout 18000;
