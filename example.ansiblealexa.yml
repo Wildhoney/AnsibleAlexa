@@ -1,5 +1,8 @@
 ---
 
+# Debug Mode
+debug: false
+
 # SSH Details
 # Usage: Required for mounting the `media` directory using SSHFS.
 ssh_server: aatest.alexandalexa.com

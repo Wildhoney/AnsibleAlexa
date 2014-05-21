@@ -34,7 +34,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   options['playbooks']['pre_sync'].each do |playbook|
 
       config.vm.provision "ansible" do |ansible|
+
+        if options['debug']
+          ansible.verbose = "vvvv"
+        end
+
         ansible.playbook = "ansible/playbooks/#{playbook}.yml"
+
       end
 
   end
@@ -51,7 +57,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   options['playbooks']['post_sync'].each do |playbook|
 
       config.vm.provision "ansible" do |ansible|
+
+        if options['debug']
+          ansible.verbose = "vvvv"
+        end
+
         ansible.playbook = "ansible/playbooks/#{playbook}.yml"
+
+
       end
 
   end
