@@ -49,7 +49,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           ansible.verbose = "vvvv"
         end
 
-        ansible.playbook = get_path("ansible/playbooks/#{playbook}.yml")
+        ansible.playbook = "ansible/playbooks/#{playbook}.yml"
 
       end
 
@@ -72,7 +72,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           ansible.verbose = "vvvv"
         end
 
-        ansible.playbook = get_path("ansible/playbooks/#{playbook}.yml")
+        ansible.playbook = "ansible/playbooks/#{playbook}.yml"
 
 
       end
