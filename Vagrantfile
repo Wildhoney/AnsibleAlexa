@@ -3,9 +3,19 @@
 
 # Dependencies.
 require 'yaml'
+require 'pathname'
+
+# Recursively finds a file in all parent directories.
+def get_path(filename)
+
+    Pathname(__FILE__).ascend{ |directory|
+        path = directory + "ansiblealexa.yml"; break path if path.file?
+    }
+
+end
 
 # Parse the configuration file.
-options = YAML.load_file("ansiblealexa.yml")
+options = YAML.load_file(get_path("ansiblealexa.yml"))
 
 VAGRANTFILE_API_VERSION = "2"
 
@@ -39,7 +49,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           ansible.verbose = "vvvv"
         end
 
-        ansible.playbook = "ansible/playbooks/#{playbook}.yml"
+        ansible.playbook = get_path("ansible/playbooks/#{playbook}.yml")
 
       end
 
@@ -62,7 +72,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           ansible.verbose = "vvvv"
         end
 
-        ansible.playbook = "ansible/playbooks/#{playbook}.yml"
+        ansible.playbook = get_path("ansible/playbooks/#{playbook}.yml")
 
 
       end
