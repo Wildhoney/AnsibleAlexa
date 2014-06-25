@@ -39,12 +39,12 @@ ip_wordpress: 192.168.50.5
 #        CPUs used, and the memory in MB allocated to the Vagrant instance.
 vagrant_port_http: 3001
 vagrant_port_ssh: 3002
-vagrant_port_xdebug: 9001 # Usually the port is the 9001
+vagrant_port_xdebug: 9000 # Usually the port is the 9000
 vagrant_cpus: 2
 vagrant_memory: 4096
 
 # IDE (PHPStorm for example)
-ide_port_xdebug: 11001 # Usually the port is the 9001 but I always use the 11001 for fun
+ide_port_xdebug: 11001 # Usually the port is the 9000 but I always use the 11001 for fun
 
 # Hostnames
 # Usage: Hostnames that should be mapped to the IP addresses defined above.
