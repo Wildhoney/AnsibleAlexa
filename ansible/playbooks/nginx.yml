@@ -13,11 +13,14 @@
     local_magento_config: "{{ document_path }}config-magento"
     local_wordpress_config: "{{ document_path }}config-wordpress"
 
+    local_nginx_config: "{{ document_path }}nginx.conf"
+
     # Remote
 
     remote_sites_enabled_path: /etc/nginx/sites-enabled
     remote_sites_available_path: /etc/nginx/sites-available
     remote_www_root_path: /usr/share/nginx/www
+    remote_nginx_path: "/etc/nginx"
 
   tasks:
 
@@ -83,6 +86,11 @@
       command: ln -sf {{ remote_sites_available_path }}/{{ host_wordpress }} {{ remote_sites_enabled_path }}/{{ host_wordpress }}
       sudo: yes
       ignore_errors: yes
+
+    - name: Copy Nginx Configuration
+      template: src={{ local_nginx_config }} dest={{ remote_nginx_path }} force=yes
+      ignore_errors: no
+      sudo: yes
 
     # Finalise
 
