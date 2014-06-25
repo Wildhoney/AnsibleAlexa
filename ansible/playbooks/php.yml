@@ -6,12 +6,16 @@
     # Local
 
     local_apc_ini_path: ../files/php/apc.ini
+    local_xdebug_ini_path: ../files/php/xdebug.ini
 
     # Remote
 
-    remote_apc_ini_path: /etc/php5/conf.d
+    remote_php_ini_path: /etc/php5/conf.d
 
   tasks:
+
+    - name: Include Configuration
+      include_vars: ../../ansiblealexa.yml
 
     # Memcache
     - name: Install Memcache
@@ -30,6 +34,31 @@
         - php5-mcrypt
         - php5-cli
         - php-apc
+        - php-pear
+        - php5-dev
+
+    # Install XDebug
+
+    - name: Uninstall XDebug
+      command: sudo pecl uninstall xdebug
+      ignore_errors: no
+
+    - name: Install XDebug
+      command: sudo pecl install xdebug
+      ignore_errors: no
+
+    - name: Looking for a XDebug instance
+      shell: find /usr/lib/ -name 'xdebug.so' 2> /dev/null
+      register: xdebugFind
+      ignore_errors: no
+
+    # Print the shell task's stdout.
+    - name: XDebug instance path
+      debug: msg="XDebug found in path '{{ xdebugFind.stdout }}'"
+
+    - name: Copy XDebug Configuration
+      template: src={{ local_xdebug_ini_path }} dest={{ remote_php_ini_path }} force=yes
+      sudo: yes
 
     # Finalise
 
