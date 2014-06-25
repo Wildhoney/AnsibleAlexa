@@ -75,12 +75,12 @@
     # Create Symlinks
 
     - name: Create Magento Symlink
-      command: ln -s {{ remote_sites_available_path }}/{{ host_magento }} {{ remote_sites_enabled_path }}/{{ host_magento }}
+      command: ln -sf {{ remote_sites_available_path }}/{{ host_magento }} {{ remote_sites_enabled_path }}/{{ host_magento }}
       sudo: yes
       ignore_errors: yes
 
     - name: Create Wordpress Symlink
-      command: ln -s {{ remote_sites_available_path }}/{{ host_wordpress }} {{ remote_sites_enabled_path }}/{{ host_wordpress }}
+      command: ln -sf {{ remote_sites_available_path }}/{{ host_wordpress }} {{ remote_sites_enabled_path }}/{{ host_wordpress }}
       sudo: yes
       ignore_errors: yes
 
