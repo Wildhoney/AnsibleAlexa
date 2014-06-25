@@ -34,7 +34,7 @@ class aaSuperGlobals {
     // International domains
     public static $worldDomains = array(
         'store.alexandalexa.com', # Live site
-        'rw.{{ host_magento }}'
+        'int.{{ host_magento }}'
     );
     // Arabia domains
     public static $saDomains = array(
