@@ -68,6 +68,7 @@ playbooks:
   pre_sync:
     - repository
     - nfs
+    - apt
 
   # Usage: Playbooks that are played subsequent to mounting the devices.
   post_sync:
