@@ -55,7 +55,7 @@ From then on all you need to do is modify your hosts file to represent the IP ad
 192.168.50.4 eu.mg.alexandalexa.com
 192.168.50.4 us.mg.alexandalexa.com
 192.168.50.4 sa.mg.alexandalexa.com
-192.168.50.4 rw.mg.alexandalexa.com
+192.168.50.4 int.mg.alexandalexa.com
 
 # Wordpress
 192.168.50.5 wp.alexandalexa.com
