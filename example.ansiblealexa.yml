@@ -29,7 +29,7 @@ db_name_wordpress: wordpress
 # Usage: IP addresses that map to `host_magento` and `host_wordpress`
 #        respectively - `ip_database` is used for the remote MySQL
 #        connection.
-ip_host: 192.168.50.1 # default interface
+ip_host: 192.168.50.1 # Default interface
 ip_database: 192.168.50.3
 ip_magento: 192.168.50.4
 ip_wordpress: 192.168.50.5
@@ -48,14 +48,13 @@ ide_port_xdebug: 11001 # Usually the port is the 9000 but I always use the 11001
 
 # Hostnames
 # Usage: Hostnames that should be mapped to the IP addresses defined above.
-host_magento: mg1.alexandalexa.com
-host_wordpress: wp1.alexandalexa.com
+host_magento: mg.alexandalexa.com
+host_wordpress: wp.alexandalexa.com
 
 # Repositories
 # Usage: GitHub repositories that hold the Magento and Wordpress code-bases.
 repository_magento: git@github.com:alexandalexa/hephaestus.git
 repository_wordpress: git@github.com:alexandalexa/Wordpress.git
-# I am using Aoe_Profiler as a standard profiler
 repository_profiler: git@github.com:fbrnc/Aoe_Profiler.git
 
 # Databases
