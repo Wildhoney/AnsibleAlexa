@@ -16,9 +16,12 @@
       sudo: yes
 
     - name: Unmount Media Directory
-      command: fusermount -u {{ remote_media_directory }}
+      command: {{ item }} {{ remote_media_directory }}
       sudo: yes
       ignore_errors: yes
+      with_items:
+        - fusermount -u
+        - umount -l
 
     - name: Remove Media Directory
       command: rmdir {{ remote_media_directory }}
