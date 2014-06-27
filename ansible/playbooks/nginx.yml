@@ -7,6 +7,8 @@
 
     document_path: ../files/nginx/
 
+    local_www_root_path: ../../websites
+
     local_default_path: "{{ document_path }}default"
     local_info_php_path: "{{ document_path }}info.php"
 
@@ -91,6 +93,16 @@
       template: src={{ local_nginx_config }} dest={{ remote_nginx_path }} force=yes
       ignore_errors: no
       sudo: yes
+
+    # Copy Configuration to our local path
+
+    - name: Copy Welcome Document and info.php on Local
+      template: src={{ document_path }}{{ item }} dest={{ local_www_root_path }} force=yes mode=0644
+      sudo: yes
+      with_items:
+        - index.html
+        - default.css
+        - info.php
 
     # Finalise
 
