@@ -1,0 +1,29 @@
+---
+- hosts: all
+  name: SSH
+  vars:
+
+    local_ssh_file_path: ../files/ssh/sshd_config
+
+    remote_ssh_file_path: /etc/ssh/sshd_config
+
+  tasks:
+
+    - name: Create a sshlogin group
+      command: groupadd sshlogin
+      sudo: yes
+      ignore_errors: yes
+
+    - name: Add vagrant to sshlogin group
+      command: adduser vagrant sshlogin
+      sudo: yes
+      ignore_errors: yes
+
+    - name: Copy SSH Configuration
+      copy: src={{ local_ssh_file_path }} dest={{ remote_ssh_file_path }} force=yes
+      sudo: yes
+
+    - name: SSH service restart
+      command: service ssh restart
+      sudo: yes
+      ignore_errors: yes
