@@ -76,7 +76,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
         ansible.playbook = "ansible/playbooks/#{playbook}.yml"
 
-
       end
 
   end

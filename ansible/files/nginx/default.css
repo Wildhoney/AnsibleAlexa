@@ -9,6 +9,23 @@ body, html {
     text-align: center;
 }
 
+h3 {
+    font-family: Arial, Tahoma, Helvetica, sans-serif;
+    font-size: 15px;
+    padding-top: 20px;
+}
+
+h4 {
+    font-family: Arial, Tahoma, Helvetica, sans-serif;
+    font-size: 12px;
+    margin-top: 0;
+    color: black;
+}
+
+code {
+    color: rgba(0, 0, 0, .5);
+}
+
 iframe {
     width: 630px;
     height: 800px;
@@ -22,6 +39,18 @@ iframe {
 section.container {
     width: 630px;
     margin: auto;
+}
+
+section.container:after {
+    content: "";
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 100px;
+    height: 100px;
+    background-image: url('http://www.baby-books-guide.com/image-files/elmer-the-patchwork-elephant-01.jpg');
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
 }
 
 h1 {
