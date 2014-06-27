@@ -44,7 +44,7 @@
       register: check_magento_path
 
     - name: Clone Magento
-      git: repo={{ repository_magento }} dest={{ local_magento_repository_path }} recursive=yes force=yes update=yes
+      git: repo={{ repository_magento }} dest={{ local_magento_repository_path }} force=yes update=yes
 #      when: check_magento_path.stat.exists == false
 
     - name: Clear Magento Lightspeed
