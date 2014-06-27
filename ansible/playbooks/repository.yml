@@ -4,8 +4,10 @@
   connection: local
   vars:
 
+    local_magento_file_path: ../files/repository
     local_magento_repository_path: ../../websites/magento
     local_wordpress_repository_path: ../../websites/wordpress
+    local_profiler_repository_path: ../../websites/profiler
     local_database_path: ../files/database
 
   tasks:
@@ -42,8 +44,8 @@
       register: check_magento_path
 
     - name: Clone Magento
-      git: repo={{ repository_magento }} dest={{ local_magento_repository_path }}
-      when: check_magento_path.stat.exists == false
+      git: repo={{ repository_magento }} dest={{ local_magento_repository_path }} recursive=yes force=yes update=yes
+#      when: check_magento_path.stat.exists == false
 
     - name: Clear Magento Lightspeed
       command: rm -rf /usr/share/nginx/www/magento/web-root/var/lightspeed/*
@@ -62,3 +64,33 @@
     - name: Clone Wordpress
       git: repo={{ repository_wordpress }} dest={{ local_wordpress_repository_path }}
       when: check_wordpress_path.stat.exists == false
+
+    # Profiler (Aoe_Profiler) Repository
+
+    - name: Check Profiler
+      stat: path=../../websites/profiler/.git
+      register: check_profiler_path
+
+    - name: Clone Profiler Repo
+      git: repo={{ repository_profiler }} dest={{ local_profiler_repository_path }}
+      when: check_profiler_path.stat.exists == false
+
+    - name: Install Profile to Magento (app)
+      shell: cp -fR {{ local_profiler_repository_path }}/app/* {{ local_magento_repository_path }}/app/
+      ignore_errors: no
+
+    - name: Install Profile to Magento (skin)
+      shell: cp -fR {{ local_profiler_repository_path }}/skin/* {{ local_magento_repository_path }}/skin/
+      ignore_errors: no
+
+    - name: Remove Profile Repo
+      command: rm -fR {{ local_profiler_repository_path }}
+      ignore_errors: yes
+
+    - name: Rename Default index.php
+      shell: mv -f {{ local_magento_repository_path }}/index.php {{ local_magento_repository_path }}/index.php.DEFAULT
+      ignore_errors: yes
+
+    - name: Copy Profiler index.php to Magento
+      shell: cp -fR {{ local_magento_file_path }}/index.php {{ local_magento_repository_path }}
+      ignore_errors: yes
