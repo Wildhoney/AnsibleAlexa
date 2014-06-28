@@ -48,6 +48,7 @@ ide_port_xdebug: 11001 # Usually the port is the 9000 but I always use the 11001
 
 # Hostnames
 # Usage: Hostnames that should be mapped to the IP addresses defined above.
+host_database: db.alexandalexa.com
 host_magento: mg.alexandalexa.com
 host_wordpress: wp.alexandalexa.com
 
