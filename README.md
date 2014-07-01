@@ -17,6 +17,7 @@ It also:
  - Clears Magento cache &ndash; and Lightspeed;
  - Configures APC cache on the PHP instance;
  - Sets up a self-signed SSL certificate for HTTPS;
+ - Configure the virtual ready to debug with XDebug and PhpStorm
  - ...And much, much more!
 
 Quick Start
