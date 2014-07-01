@@ -32,7 +32,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.vm.network "forwarded_port", guest: 80, host: options['vagrant_port_http']
   config.vm.network "forwarded_port", guest: 22, host: options['vagrant_port_ssh'], id: "ssh", auto_correct: true
-  config.vm.network "forwarded_port", guest: options['vagrant_port_xdebug'], host: options['ide_port_xdebug']
   config.vm.network "private_network", ip: ip_database
   config.vm.network "private_network", ip: ip_magento
   config.vm.network "private_network", ip: ip_wordpress
