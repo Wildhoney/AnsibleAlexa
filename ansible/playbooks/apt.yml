@@ -7,3 +7,9 @@
       # Only run "update_cache=yes" if the last one is more than 3600 seconds ago
       apt: update_cache=yes cache_valid_time=3600
       sudo: yes
+
+    - name: Install VIM
+      apt: pkg={{ item }} state=installed update_cache=true install_recommends=yes
+      sudo: yes
+      with_items:
+        - vim
