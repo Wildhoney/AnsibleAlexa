@@ -1,17 +1,17 @@
 {
   "name": "AnsibleAlexa",
-  "version": "0.2.2",
-  "description": "AnsibleAlexa ============",
+  "version": "0.2.3",
+  "description": "Development deployment using Vagrant w/ Ansible provisioner.",
+  "license": "MIT",
   "main": "Vagrantfile",
-  "scripts": {
-    "test": "Vagrantfile"
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/Wildhoney/AnsibleAlexa.git"
   },
-  "author": "Adam Timberlake <adam.timberlake@gmail.com>",
-  "license": "MIT",
+  "author": [
+      "Adam Timberlake <adam.timberlake@gmail.com>",
+      "Gabriele Ravanelli <gabriele.ravanelli@gmail.com>"
+  ],
   "bugs": {
     "url": "https://github.com/Wildhoney/AnsibleAlexa/issues"
   },
