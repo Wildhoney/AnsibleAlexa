@@ -7,10 +7,12 @@
 
     local_apc_ini_path: ../files/php/apc.ini
     local_xdebug_ini_path: ../files/php/xdebug.ini
+    local_php_cli_ini_path: ../files/php/cli/php.ini
 
     # Remote
 
     remote_php_ini_path: /etc/php5/conf.d
+    remote_php_ini_path_cli: /etc/php5/cli
 
   tasks:
 
@@ -59,6 +61,12 @@
     - name: Copy XDebug Configuration
       template: src={{ local_xdebug_ini_path }} dest={{ remote_php_ini_path }} force=yes
       sudo: yes
+      ignore_errors: no
+
+    - name: Copy XDebug Configuration for CLI
+      template: src={{ local_php_cli_ini_path }} dest={{ remote_php_ini_path_cli }} force=yes
+      sudo: yes
+      ignore_errors: no
 
     # Finalise
 
