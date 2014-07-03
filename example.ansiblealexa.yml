@@ -81,4 +81,5 @@ playbooks:
     - config
     - sshfs
     - hosts
+    - npm
     - ssh
