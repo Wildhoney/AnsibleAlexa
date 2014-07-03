@@ -95,3 +95,7 @@
     - name: Copy Profiler index.php to Magento
       shell: cp -fR {{ local_magento_file_path }}/index.php {{ local_magento_web_path }}
       ignore_errors: yes
+
+    - name: Copy Profiler Fixed Css to Magento
+      shell: cp -fR {{ local_magento_file_path }}/aoe_profiler/css/styles.css {{ local_magento_web_path }}/skin/frontend/base/default/aoe_profiler/css
+      ignore_errors: no
