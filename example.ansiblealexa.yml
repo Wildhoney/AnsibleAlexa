@@ -80,5 +80,6 @@ playbooks:
     - mysql
     - config
     - sshfs
+    - npm
     - hosts
     - ssh
