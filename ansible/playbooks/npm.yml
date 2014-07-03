@@ -49,3 +49,6 @@
 
     - name: Install Bower Dependencies
       shell: bower install chdir={{ magento_root_path }}
+
+    - name: Build Frontend Depedencies
+      shell: grunt build chdir={{ magento_root_path }}
