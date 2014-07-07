@@ -19,3 +19,7 @@
 
     - name: Open Welcome Page
       command: open http://localhost:{{ vagrant_port_http }}
+
+    - name: Assume Domains.php Unchanged
+      command: git update-index --assume-unchanged web-root/domains.php chdir={{ magento_root_path }}
+      sudo: yes
