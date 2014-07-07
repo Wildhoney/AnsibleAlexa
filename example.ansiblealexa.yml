@@ -3,6 +3,9 @@
 # Debug Mode
 debug: false
 
+# Box Name
+box: precise64
+
 # SSH Details
 # Usage: Required for mounting the `media` directory using SSHFS.
 ssh_server: aatest.alexandalexa.com
@@ -81,5 +84,5 @@ playbooks:
     - config
     - sshfs
     - npm
-    - hosts
+    - cleanup
     - ssh
