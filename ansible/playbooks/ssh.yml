@@ -9,12 +9,12 @@
 
   tasks:
 
-    - name: Create a sshlogin group
+    - name: Create a "sshlogin" Group
       command: groupadd sshlogin
       sudo: yes
       ignore_errors: yes
 
-    - name: Add vagrant to sshlogin group
+    - name: Add Vagrant to "sshlogin" Group
       command: adduser vagrant sshlogin
       sudo: yes
       ignore_errors: yes
@@ -23,7 +23,7 @@
       copy: src={{ local_ssh_file_path }} dest={{ remote_ssh_file_path }} force=yes
       sudo: yes
 
-    - name: SSH service restart
+    - name: SSH Service Restart
       command: service ssh restart
       sudo: yes
       ignore_errors: yes

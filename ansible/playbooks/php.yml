@@ -49,13 +49,13 @@
       command: sudo pecl install xdebug
       ignore_errors: no
 
-    - name: Looking for a XDebug instance
+    - name: Looking for a XDebug Instance
       shell: find /usr/lib/ -name 'xdebug.so' 2> /dev/null
       register: xdebugFind
       ignore_errors: no
 
     # Print the shell task's stdout.
-    - name: XDebug instance path
+    - name: XDebug Instance Path
       debug: msg="XDebug found in path '{{ xdebugFind.stdout }}'"
 
     - name: Copy XDebug Configuration
