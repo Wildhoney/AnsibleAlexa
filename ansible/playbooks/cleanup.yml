@@ -1,7 +1,10 @@
 ---
 - hosts: all
-  name: Hosts
+  name: Clanup
   connection: local
+  vars:
+
+    magento_root_path: ../../websites/magento
 
   tasks:
 
@@ -21,5 +24,4 @@
       command: open http://localhost:{{ vagrant_port_http }}
 
     - name: Assume Domains.php Unchanged
-      command: git update-index --assume-unchanged web-root/domains.php chdir={{ magento_root_path }}
-      sudo: yes
+      command: chdir={{ magento_root_path }} git update-index --assume-unchanged web-root/domains.php
