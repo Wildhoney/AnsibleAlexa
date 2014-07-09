@@ -49,7 +49,7 @@
       command: sudo pecl install xdebug
       ignore_errors: no
 
-    - name: Looking for a XDebug Instance
+    - name: Detect XDebug Instance
       shell: find /usr/lib/ -name 'xdebug.so' 2> /dev/null
       register: xdebugFind
       ignore_errors: no
