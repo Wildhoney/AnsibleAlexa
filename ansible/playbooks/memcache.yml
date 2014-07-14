@@ -1,0 +1,44 @@
+- hosts: all
+  name: MEMCACHE
+
+  tasks:
+
+    - name: Install memcached DEP
+      apt: pkg={{ item }} state=installed update_cache=true install_recommends=yes
+      sudo: yes
+      with_items:
+        - memcached
+#        - build-essential
+
+    - name: Create tha "input" file
+      shell: echo "yes\n" > inputYES
+      sudo: yes
+      ignore_errors: no
+
+    - name: Config memcache
+      shell: sudo pecl install -f memcache < inputYES
+      sudo: yes
+      ignore_errors: no
+
+    - name: Create memcache.ini files
+      shell: echo "extension=memcache.so" | sudo tee /etc/php5/conf.d/memcache.ini
+      sudo: yes
+      ignore_errors: no
+      with_items:
+        - /etc/php5/conf.d/memcache.ini
+        - /etc/php5/fpm/conf.d/memcache.ini
+
+    - name: Delete the "input" file
+      shell: rm -f inputYES
+      sudo: yes
+      ignore_errors: no
+
+    # Finalise
+
+    - name: Restart Nginx
+      service: name=nginx state=restarted
+      sudo: yes
+
+    - name: Restart PHP
+      service: name=php5-fpm state=restarted
+      sudo: yes
