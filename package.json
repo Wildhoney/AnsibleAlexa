@@ -1,6 +1,6 @@
 {
   "name": "AnsibleAlexa",
-  "version": "0.2.4",
+  "version": "0.2.6",
   "description": "Development deployment using Vagrant w/ Ansible provisioner.",
   "license": "MIT",
   "main": "Vagrantfile",

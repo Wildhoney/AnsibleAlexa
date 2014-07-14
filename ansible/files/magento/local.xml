@@ -40,26 +40,26 @@
             <memcached>
                 <servers>
                     <memcache>
-                        <host><![CDATA[127.0.0.1]]></host>
-                        <port><![CDATA[11211]]></port>
-                        <persistent><![CDATA[1]]></persistent>
-                        <weight><![CDATA[1]]></weight>
-                        <timeout><![CDATA[1]]></timeout>
-                        <retry_interval><![CDATA[1]]></retry_interval>
-                        <status><![CDATA[1]]></status>
+                        <host>127.0.0.1</host>
+                        <port>11211</port>
+                        <persistent>1</persistent>
+                        <weight>1</weight>
+                        <timeout>1</timeout>
+                        <retry_interval>1</retry_interval>
+                        <status>1</status>
                     </memcache>
                 </servers>
             </memcached>
             <slow_backend_options>
                 <servers>
                     <memcache>
-                        <host><![CDATA[127.0.0.1]]></host>
-                        <port><![CDATA[11211]]></port>
-                        <persistent><![CDATA[1]]></persistent>
-                        <weight><![CDATA[1]]></weight>
-                        <timeout><![CDATA[1]]></timeout>
-                        <retry_interval><![CDATA[1]]></retry_interval>
-                        <status><![CDATA[1]]></status>
+                        <host>127.0.0.1</host>
+                        <port>11211</port>
+                        <persistent>1</persistent>
+                        <weight>1</weight>
+                        <timeout>1</timeout>
+                        <retry_interval>1</retry_interval>
+                        <status>1</status>
                     </memcache>
                 </servers>
             </slow_backend_options>
