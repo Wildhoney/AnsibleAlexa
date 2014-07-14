@@ -84,5 +84,6 @@ playbooks:
     - config
     - sshfs
     - npm
+    - memcache
     - cleanup
     - ssh
