@@ -46,6 +46,13 @@ vagrant_port_xdebug: 9000 # Usually the port is the 9000
 vagrant_cpus: 4
 vagrant_memory: 1024
 
+# Varnish
+varnish_local_port: 6082
+varnish_broadcast_port: 80
+
+# Nginx
+nginx_broadcast_port: 8080 # By default without varnish is 80
+
 # IDE (PHPStorm for example)
 ide_port_xdebug: 11001 # Usually the port is the 9000 but I always use the 11001 for fun
 
@@ -85,5 +92,6 @@ playbooks:
     - sshfs
     - npm
     - memcache
+    - varnish
     - cleanup
     - ssh
