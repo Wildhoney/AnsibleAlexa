@@ -1,5 +1,7 @@
 server {
 
+    listen {{ nginx_broadcast_port }};
+
     root /usr/share/nginx/www/wordpress/content;
     index index.php index.html index.htm;
 
