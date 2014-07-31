@@ -42,3 +42,8 @@
     - name: Restart PHP
       service: name=php5-fpm state=restarted
       sudo: yes
+
+    - name: Flush Memcache
+      shell: echo 'flush_all' | nc localhost 11211
+      sudo: yes
+      ignore_errors: no
