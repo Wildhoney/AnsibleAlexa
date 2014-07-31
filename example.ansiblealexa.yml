@@ -68,6 +68,8 @@ repository_magento: git@github.com:alexandalexa/hephaestus.git
 repository_wordpress: git@github.com:alexandalexa/Wordpress.git
 # I am using Aoe_Profiler as a standard profiler
 repository_profiler: git@github.com:fbrnc/Aoe_Profiler.git
+# I am using Aoe_TemplateHints as a standard Template Hints
+repository_templatehints: git@github.com:fbrnc/Aoe_TemplateHints.git
 
 # Databases
 # Usage: Remote location of where "wordpress-core.sql.gz" and "magento-core.sql.gz" are.
