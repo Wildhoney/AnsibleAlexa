@@ -55,6 +55,13 @@
 
     # Database Dumps
 
+    - name: Detect Varnish Auth Key
+      shell: cat /etc/varnish/secret
+      register: varnish_auth_key
+      sudo: yes
+      ignore_errors: no
+      notify: Template Magento Database
+
     - name: Check Magento Database
       mysql_db: name={{ db_name_magento }} state=present
                 login_password={{ db_password }} login_user={{ db_username_root }}
