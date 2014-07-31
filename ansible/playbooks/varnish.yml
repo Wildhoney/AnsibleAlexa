@@ -1,0 +1,62 @@
+- hosts: all
+  name: Varnish
+  vars:
+
+    # Local
+
+    local_varnish_config_path: ../files/varnish/varnish
+
+    # Remote
+
+    remote_varnish_config_path: /etc/default/varnish
+    remote_varnish_path: /etc/varnish
+    remote_magento_domains_path: /usr/share/nginx/www/magento/web-root
+
+  # Follow the steps on the official doc
+  # link: https://sites.google.com/a/alexandalexa.com/knowledge/home/technology/bootstrap/manually-install-varnish
+  tasks:
+
+    - name: Include Configuration
+      include_vars: ../../ansiblealexa.yml
+
+    # Add an Apt signing key, will not download if present
+    - name: Import the Varnish public key
+      apt_key: url=https://repo.varnish-cache.org/ubuntu/GPG-key.txt state=present
+      sudo: yes
+
+    - name: Create a list file for Varnish
+      shell: echo "deb https://repo.varnish-cache.org/ubuntu/ precise varnish-3.0" >> /etc/apt/sources.list.d/varnish-cache.list
+      sudo: yes
+      ignore_errors: no
+
+    - name: Reload local package database
+      # Only run "update_cache=yes" if the last one is more than 3600 seconds ago
+      apt: update_cache=yes cache_valid_time=3600
+      sudo: yes
+
+#    - name: Install Varnish
+#      apt: pkg={{ item }} state=installed update_cache=true install_recommends=yes
+#      sudo: yes
+#      with_items:
+#        - varnish
+
+    - name: Copy Varnish Configuration
+      template: src={{ local_varnish_config_path }} dest={{ remote_varnish_config_path }} force=yes
+      sudo: yes
+      ignore_errors: no
+
+    - name: Backup STANDARD config file
+      shell: mv {{ remote_varnish_path }}/default.vcl {{ remote_varnish_path }}/default.vcl.org
+      sudo: yes
+      ignore_errors: no
+
+    - name: Link NEW config file
+      shell: ln -s {{ remote_magento_domains_path }}/app/code/community/Nexcessnet/Turpentine/misc/default.vcl {{ remote_varnish_path }}/default.vcl
+      sudo: yes
+      ignore_errors: no
+
+    # Finalise
+
+    - name: Restart Varnish
+      service: name=varnish state=restarted
+      sudo: yes
