@@ -45,10 +45,10 @@
       sudo: yes
       ignore_errors: no
 
-    - name: Backup STANDARD config file
-      shell: mv {{ remote_varnish_path }}/default.vcl {{ remote_varnish_path }}/default.vcl.org
-      sudo: yes
-      ignore_errors: no
+#    - name: Backup STANDARD config file
+#      shell: mv {{ remote_varnish_path }}/default.vcl {{ remote_varnish_path }}/default.vcl.org
+#      sudo: yes
+#      ignore_errors: no
 
     - name: Create 'var/turpentine' directory
       file: path={{ remote_magento_domains_path }}/var/turpentine/ state=directory
