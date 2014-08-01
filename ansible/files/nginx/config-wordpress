@@ -8,8 +8,8 @@ server {
     server_name {{ host_wordpress }};
     sendfile off;
     
-    access_log /var/log/nginx/wordpress.log;
-    error_log /var/log/nginx/wordpress.log;
+    access_log /var/log/nginx/{{ host_wordpress }}-access.log;
+    error_log /var/log/nginx/{{ host_wordpress }}-error.log;
 
     location ~ [^/]\.php(/|$) {
 
