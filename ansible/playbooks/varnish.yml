@@ -54,7 +54,7 @@
       file: path={{ remote_magento_domains_path }}/var/turpentine/ state=directory
 
     - name: Copy New Config file
-      shell: cp -f {{ local_varnish_config_path }}/default.vcl {{ remote_magento_domains_path }}/var/turpentine/default.vcl
+      template: src={{ local_varnish_config_path }}/default.vcl dest={{ remote_magento_domains_path }}/var/turpentine/default.vcl force=yes
       sudo: yes
       ignore_errors: no
 
