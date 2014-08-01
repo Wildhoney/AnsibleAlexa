@@ -59,7 +59,7 @@
       ignore_errors: no
 
     - name: Link NEW config file
-      shell: ln -s {{ remote_magento_domains_path }}/var/turpentine/default.vcl {{ remote_varnish_path }}/default.vcl
+      shell: ln -fs {{ remote_magento_domains_path }}/var/turpentine/default.vcl {{ remote_varnish_path }}/default.vcl
       sudo: yes
       ignore_errors: no
 
