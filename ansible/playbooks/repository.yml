@@ -9,7 +9,7 @@
     local_magento_web_path: ../../websites/magento/web-root
     local_wordpress_repository_path: ../../websites/wordpress
     local_profiler_repository_path: ../../websites/profiler
-    local_templatehints_repository_path: ../../websites/templatehints
+#    local_templatehints_repository_path: ../../websites/templatehints
     local_database_path: ../files/database
 
   tasks:
@@ -89,21 +89,21 @@
       command: rm -fR {{ local_profiler_repository_path }}
       ignore_errors: yes
 
-    - name: Clone Template Hints Repo
-      git: repo={{ repository_templatehints }} dest={{ local_templatehints_repository_path }}
-      when: check_profiler_path.stat.exists == false
-
-    - name: Install Template Hints to Magento (app)
-      shell: cp -fR {{ local_templatehints_repository_path }}/app/* {{ local_magento_web_path }}/app/
-      ignore_errors: no
-
-    - name: Install Template Hints to Magento (skin)
-      shell: cp -fR {{ local_templatehints_repository_path }}/skin/* {{ local_magento_web_path }}/skin/
-      ignore_errors: no
-
-    - name: Remove Template Hints Repo
-      command: rm -fR {{ local_templatehints_repository_path }}
-      ignore_errors: yes
+#    - name: Clone Template Hints Repo
+#      git: repo={{ repository_templatehints }} dest={{ local_templatehints_repository_path }}
+#      when: check_profiler_path.stat.exists == false
+#
+#    - name: Install Template Hints to Magento (app)
+#      shell: cp -fR {{ local_templatehints_repository_path }}/app/* {{ local_magento_web_path }}/app/
+#      ignore_errors: no
+#
+#    - name: Install Template Hints to Magento (skin)
+#      shell: cp -fR {{ local_templatehints_repository_path }}/skin/* {{ local_magento_web_path }}/skin/
+#      ignore_errors: no
+#
+#    - name: Remove Template Hints Repo
+#      command: rm -fR {{ local_templatehints_repository_path }}
+#      ignore_errors: yes
 
     - name: Rename Default index.php
       shell: mv -f {{ local_magento_web_path }}/index.php {{ local_magento_web_path }}/index.php.DEFAULT

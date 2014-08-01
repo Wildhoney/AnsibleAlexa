@@ -4,7 +4,7 @@
 
     # Local
 
-    local_varnish_config_path: ../files/varnish/varnish
+    local_varnish_config_path: ../files/varnish
 
     # Remote
 
@@ -41,7 +41,7 @@
 #        - varnish
 
     - name: Copy Varnish Configuration
-      template: src={{ local_varnish_config_path }} dest={{ remote_varnish_config_path }} force=yes
+      template: src={{ local_varnish_config_path }}/varnish dest={{ remote_varnish_config_path }} force=yes
       sudo: yes
       ignore_errors: no
 
