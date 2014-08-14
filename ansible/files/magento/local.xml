@@ -76,86 +76,86 @@
         </routers>
     </admin>
 
-    <lightspeed>
-        <global>
-            <connection>
-                <host>{{ db_hostname }}</host>
-                <username>{{ db_username_root }}</username>
-                <password>{{ db_password }}</password>
-                <dbname>localhost</dbname>
-            </connection>
-            <multi_currency>1</multi_currency>
-            <request_path />
+    <!--<lightspeed>-->
+        <!--<global>-->
+            <!--<connection>-->
+                <!--<host>{{ db_hostname }}</host>-->
+                <!--<username>{{ db_username_root }}</username>-->
+                <!--<password>{{ db_password }}</password>-->
+                <!--<dbname>localhost</dbname>-->
+            <!--</connection>-->
+            <!--<multi_currency>1</multi_currency>-->
+            <!--<request_path />-->
 
-           <params>gclid,pcrid,mkwid,plid,kword,match,utm_medium,utm_source,utm_campaign,utm_term,utm_content,aa_set_site</params>
-           <params_nocache>SID,gclid,pcrid,mkwid,plid,kword,match,utm_medium,utm_source,utm_campaign,utm_term,utm_content</params_nocache>
-           <admin_uri>alexpie</admin_uri>
-           <exclude_uri>store,from_store,SID,sgps,sgpsSecure,paypal,aa_currency</exclude_uri>
+           <!--<params>gclid,pcrid,mkwid,plid,kword,match,utm_medium,utm_source,utm_campaign,utm_term,utm_content,aa_set_site</params>-->
+           <!--<params_nocache>SID,gclid,pcrid,mkwid,plid,kword,match,utm_medium,utm_source,utm_campaign,utm_term,utm_content</params_nocache>-->
+           <!--<admin_uri>alexpie</admin_uri>-->
+           <!--<exclude_uri>store,from_store,SID,sgps,sgpsSecure,paypal,aa_currency</exclude_uri>-->
 
-           <multi_storeview>1</multi_storeview>
-           <multi_hostname>1</multi_hostname>
-           <multi_hostname_config>
-               <site>
-                   <run_code>website_uk</run_code>
-                   <run_type>website</run_type>
-                   <host_name>{{ host_magento }}</host_name>
-               </site>
-               <site>
-                   <run_code>website_usa</run_code>
-                   <run_type>website</run_type>
-                   <host_name>usa.{{ host_magento }}</host_name>
-               </site>
-               <site>
-                   <run_code>website_eu</run_code>
-                   <run_type>website</run_type>
-                   <host_name>eu.{{ host_magento }}</host_name>
-               </site>
-               <site>
-                   <run_code>website_int</run_code>
-                   <run_type>website</run_type>
-                   <host_name>store.{{ host_magento }}</host_name>
-               </site>
-               <site>
-                   <run_code>website_sa</run_code>
-                   <run_type>website</run_type>
-                   <host_name>sa.{{ host_magento }}</host_name>
-               </site>
-           </multi_hostname_config>
-       </global>
+           <!--<multi_storeview>1</multi_storeview>-->
+           <!--<multi_hostname>1</multi_hostname>-->
+           <!--<multi_hostname_config>-->
+               <!--<site>-->
+                   <!--<run_code>website_uk</run_code>-->
+                   <!--<run_type>website</run_type>-->
+                   <!--<host_name>{{ host_magento }}</host_name>-->
+               <!--</site>-->
+               <!--<site>-->
+                   <!--<run_code>website_usa</run_code>-->
+                   <!--<run_type>website</run_type>-->
+                   <!--<host_name>usa.{{ host_magento }}</host_name>-->
+               <!--</site>-->
+               <!--<site>-->
+                   <!--<run_code>website_eu</run_code>-->
+                   <!--<run_type>website</run_type>-->
+                   <!--<host_name>eu.{{ host_magento }}</host_name>-->
+               <!--</site>-->
+               <!--<site>-->
+                   <!--<run_code>website_int</run_code>-->
+                   <!--<run_type>website</run_type>-->
+                   <!--<host_name>store.{{ host_magento }}</host_name>-->
+               <!--</site>-->
+               <!--<site>-->
+                   <!--<run_code>website_sa</run_code>-->
+                   <!--<run_type>website</run_type>-->
+                   <!--<host_name>sa.{{ host_magento }}</host_name>-->
+               <!--</site>-->
+           <!--</multi_hostname_config>-->
+       <!--</global>-->
 
-       <session>
-           <type>db</type>
-           <path />
+       <!--<session>-->
+           <!--<type>db</type>-->
+           <!--<path />-->
 
-           <servers>
-               <localhost>
-                   <host>127.0.0.1</host>
-                   <port>11211</port>
-                   <persistent>1</persistent>
-               </localhost>
-           </servers>
+           <!--<servers>-->
+               <!--<localhost>-->
+                   <!--<host>127.0.0.1</host>-->
+                   <!--<port>11211</port>-->
+                   <!--<persistent>1</persistent>-->
+               <!--</localhost>-->
+           <!--</servers>-->
 
-           <connection>
-               <host>127.0.0.1</host>
-               <username>{{ db_username_root }}</username>
-               <password>{{ db_password }}</password>
-               <dbname>{{ db_name_magento }}</dbname>
-           </connection>
-       </session>
+           <!--<connection>-->
+               <!--<host>127.0.0.1</host>-->
+               <!--<username>{{ db_username_root }}</username>-->
+               <!--<password>{{ db_password }}</password>-->
+               <!--<dbname>{{ db_name_magento }}</dbname>-->
+           <!--</connection>-->
+       <!--</session>-->
 
-       <cache>
-           <type>memcached</type>
-           <path />
+       <!--<cache>-->
+           <!--<type>memcached</type>-->
+           <!--<path />-->
 
-           <servers>
-               <localhost>
-                   <host>127.0.0.1</host>
-                   <port>11211</port>
-                   <persistent>1</persistent>
-               </localhost>
-           </servers>
-       </cache>
+           <!--<servers>-->
+               <!--<localhost>-->
+                   <!--<host>127.0.0.1</host>-->
+                   <!--<port>11211</port>-->
+                   <!--<persistent>1</persistent>-->
+               <!--</localhost>-->
+           <!--</servers>-->
+       <!--</cache>-->
 
-   </lightspeed>
+   <!--</lightspeed>-->
       
 </config>
