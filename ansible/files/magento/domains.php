@@ -22,24 +22,24 @@ class aaSuperGlobals {
     // us domains
     public static $usDomains = array(
         'usa.alexandalexa.com', # Live site
-        'us.{{ host_magento }}'
+        'us-{{ host_magento }}'
     );
 
     // eu domains
     public static $euDomains = array(
         'eu.alexandalexa.com', # Live site
-        'eu.{{ host_magento }}'
+        'eu-{{ host_magento }}'
     );
     
     // International domains
     public static $worldDomains = array(
         'store.alexandalexa.com', # Live site
-        'int.{{ host_magento }}'
+        'int-{{ host_magento }}'
     );
     // Arabia domains
     public static $saDomains = array(
         'sa.alexandalexa.com', # Live site
-        'sa.{{ host_magento }}'
+        'sa-{{ host_magento }}'
     );
     
     // Hostnames
