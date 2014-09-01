@@ -90,7 +90,7 @@
       notify: Decompress Magento Database
 
     - name: Decompress Magento Database
-      command: gzip -d {{ db_remote_path }}/magento-core.sql.gz
+      command: gunzip {{ db_remote_path }}/magento-core.sql.gz
       sudo: yes
       notify: Template Magento Database
 
