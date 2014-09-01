@@ -21,7 +21,7 @@
       ignore_errors: no
 
     - name: Create memcache.ini files
-      shell: echo "extension=memcache.so" | sudo tee /etc/php5/conf.d/memcache.ini
+      shell: echo "extension=memcache.so" | sudo tee {{ item }}
       sudo: yes
       ignore_errors: no
       with_items:
